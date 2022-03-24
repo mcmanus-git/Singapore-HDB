@@ -1,0 +1,35 @@
+# Metadata for MP14 SDCP PW PLAN - Parks and Open Space
+---
+Identifier: '84838a67-5a66-476f-8b29-cc1692660811'
+Name: 'mp14-sdcp-pw-plan-parks-and-open-space'
+Title: 'MP14 SDCP PW PLAN - Parks and Open Space'
+Description: 'Indicative polygon of Parks and Open Spaces'
+Topics:
+  - 'Infrastructure'
+Keywords:
+  - 'MP14 National Park'
+  - 'Master Plan 2014 Parks and Waterbodies'
+Publisher:
+  Name: 'Urban Redevelopment Authority'
+  Admin 1:
+    Name: 'Pamela Poh'
+    Department: 'Urban Redevelopment Authority'
+    Email: 'pamela_poh@ura.gov.sg'
+Sources:
+  - 'Urban Redevelopment Authority'
+License: 'https://data.gov.sg/open-data-licence'
+Frequency: 'Ad-hoc'
+Last Updated: '2017-06-14T08:15:05.337775'
+Resources:
+  -
+    Identifier: 'dab8dd78-7273-490f-98f7-890b7a2055d6'
+    Title: 'MP14 SDCP PW PLAN - Parks and Open Space (KML)'
+    Url: 'https://geo.data.gov.sg/g-mp14-pkwb-parks-pl/2017/01/18/kml/g-mp14-pkwb-parks-pl.zip'
+    Format: 'KML'
+    Last Updated: '2017-01-17T16:00:00'
+  -
+    Identifier: '4a8e6d18-7b0f-4aac-977b-bfcf3baa47f7'
+    Title: 'MP14 SDCP PW PLAN - Parks and Open Space (SHP)'
+    Url: 'https://geo.data.gov.sg/g-mp14-pkwb-parks-pl/2017/01/18/shp/g-mp14-pkwb-parks-pl.zip'
+    Format: 'SHP'
+    Last Updated: '2017-01-17T16:00:00'
