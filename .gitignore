@@ -134,3 +134,5 @@ dmypy.json
 
 michael/.DS_Store
 michael/data/resale-flat-prices/resale_prices.pkl
+
+stuart/cache
