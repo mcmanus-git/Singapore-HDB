@@ -7,7 +7,7 @@ nav = create_navbar()
 header = html.H3('Welcome to page 2!')
 
 
-def create_page_2():
+def create_page_blog():
     layout = html.Div([
         nav,
         header,

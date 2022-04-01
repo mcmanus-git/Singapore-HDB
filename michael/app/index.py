@@ -4,7 +4,7 @@ from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
 from home import create_page_home
-from page_2 import create_page_2
+from page_blog import create_page_blog
 from page_3 import create_page_3
 from app import app
 
@@ -20,8 +20,8 @@ app.layout = html.Div([
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '/page-2':
-        return create_page_2()
+    if pathname == '/blog':
+        return create_page_blog()
     if pathname == '/page-3':
         return create_page_3()
     else:
@@ -29,4 +29,5 @@ def display_page(pathname):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.title = "WhyHigh"
+    app.run_server(debug=True)

@@ -11,15 +11,15 @@ def create_navbar():
                 children=[
                     dbc.DropdownMenuItem("Home", href='/'),
                     dbc.DropdownMenuItem(divider=True),
-                    dbc.DropdownMenuItem("Page 2", href='/page-2'),
+                    dbc.DropdownMenuItem("Blog", href='/blog'),
                     dbc.DropdownMenuItem("Page 3", href='/page-3'),
                 ],
             ),
         ],
-        brand="Home",
+        brand="Why-High",
         brand_href="/",
         sticky="top",
-        color="dark",  # Change this to change color of the navbar e.g. "primary", "secondary" etc.
+        color='#D91800',#"primary",  # Change this to change color of the navbar e.g. "primary", "secondary", "dark" etc.
         dark=True,  # Change this to change color of text within the navbar (False for dark text)
     )
 
