@@ -56,12 +56,13 @@ def create_page_home():
         html.Div([
             html.I("Search Address"),
             html.Br(),
-            dcc.Input(id='address_search_input', type='text', value='Enter Address', style={'marginRight':'10px'}),
+            dcc.Input(id='address_search_input', type='text', placeholder='Enter Address', debounce=True, style={'marginRight':'10px'}),
             # html.Div(id='address_search_output'),
             dcc.Loading(
                 id="address_search_input_loading",
                 children=[html.Div(id="address_search_output")],
                 type="cube",
+                color='#4ABF72'
             ),
             # html.Div(id='address_search_output')
 
