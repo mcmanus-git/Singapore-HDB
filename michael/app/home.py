@@ -9,6 +9,7 @@ from sqlalchemy import create_engine
 from app import app
 from dash.dependencies import Input, Output
 from address_search import return_search_results
+import time
 
 test_query = 'select id from resale_prices_norm limit 1;'
 
@@ -55,8 +56,15 @@ def create_page_home():
         html.Div([
             html.I("Search Address"),
             html.Br(),
-            dcc.Input(id='address_search_input', type='text', placeholder='Address', style={'marginRight':'10px'}),
-            html.Div(id='address_search_output')
+            dcc.Input(id='address_search_input', type='text', value='Enter Address', style={'marginRight':'10px'}),
+            # html.Div(id='address_search_output'),
+            dcc.Loading(
+                id="address_search_input_loading",
+                children=[html.Div(id="address_search_output")],
+                type="cube",
+            ),
+            # html.Div(id='address_search_output')
+
         ], style={'margin': '20px 200px 10px 200px', 'flex': 1})
 
     ])
@@ -64,8 +72,11 @@ def create_page_home():
 
 @app.callback(
     Output('address_search_output', 'children'),
+    # Output('address_search_loading_output', 'children'),
     Input('address_search_input', 'value')
 )
 def get_address_information(address_search_input):
+    time.sleep(1)
     search_results = return_search_results(address_search_input)
+
     return f"Address: {search_results}"
