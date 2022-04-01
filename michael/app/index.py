@@ -2,6 +2,7 @@
 from dash import dcc
 # import dash_html_components as html
 from dash import html
+import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 from home import create_page_home
 from page_blog import create_page_blog
@@ -11,10 +12,10 @@ from app import app
 server = app.server
 app.config.suppress_callback_exceptions = True
 
-app.layout = html.Div([
+app.layout = dbc.Container(html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content')
-])
+]), fluid=True, className="dbc")
 
 
 @app.callback(Output('page-content', 'children'),

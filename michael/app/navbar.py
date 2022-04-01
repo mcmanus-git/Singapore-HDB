@@ -19,7 +19,8 @@ def create_navbar():
         brand="Why-High",
         brand_href="/",
         sticky="top",
-        color='#D91800',#"primary",  # Change this to change color of the navbar e.g. "primary", "secondary", "dark" etc.
+        # color='#D91800',
+        color="success",  # Change this to change color of the navbar e.g. "primary", "secondary", "dark" etc.
         dark=True,  # Change this to change color of text within the navbar (False for dark text)
     )
 
