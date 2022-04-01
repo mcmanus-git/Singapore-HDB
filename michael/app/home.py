@@ -74,7 +74,8 @@ def create_page_home():
 @app.callback(
     Output('address_search_output', 'children'),
     # Output('address_search_loading_output', 'children'),
-    Input('address_search_input', 'value')
+    Input('address_search_input', 'value'),
+    prevent_initial_call=True
 )
 def get_address_information(address_search_input):
     time.sleep(1)
