@@ -63,4 +63,5 @@ def get_address_information(address_search_input):
     time.sleep(1)
     search_results = return_search_results(address_search_input)
 
-    return f"Address: {search_results}"
+    # return f"Address: {search_results}"
+    return search_results

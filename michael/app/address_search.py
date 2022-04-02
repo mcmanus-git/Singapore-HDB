@@ -1,8 +1,11 @@
 import geopandas as gpd
+import pandas as pd
 from sqlalchemy import create_engine
 from MyCreds.mycreds import Capstone_AWS_PG, MapBox
 from collections import defaultdict, Counter
 import re
+from dash import dcc
+from dash import html
 
 
 def get_hdb_property_info():
@@ -49,10 +52,29 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
     for word in search.split():
         search_vals[word].append(address_inv_indx[word.upper()])
 
-    most_probable_addresses = Counter([item for sublist in search_vals.values() for lst in sublist for item in lst]).most_common()[:n_results]
-    addresses = hdb[hdb['id'].isin([most_probable_addresses[i][0] for i, index in enumerate(most_probable_addresses)])][['id', 'block_number', 'street', 'postal']].values
+    # most_probable_addresses = Counter([item for sublist in search_vals.values() for lst in sublist for item in lst]).most_common()[:n_results]
+    # addresses = hdb[hdb['id'].isin([most_probable_addresses[i][0] for i, index in enumerate(most_probable_addresses)])][['id', 'block_number', 'street', 'postal']].values
 
-    return str(addresses)
+
+    most_probable_addresses = Counter([item for sublist in search_vals.values() for lst in sublist for item in lst]).most_common()[:n_results]
+
+    address_ids = [most_probable_addresses[i][0] for i, _ in enumerate(most_probable_addresses)]
+
+    addresses = pd.DataFrame()
+    for id in address_ids:
+        addresses = pd.concat([addresses, hdb[hdb['id'] == id]])
+
+    addresses = addresses[['id', 'block_number', 'street', 'postal']].values
+
+    search_results = html.Div( dcc.Markdown(f"""Search Results:  
+    {addresses[0]}  
+    {addresses[1]}  
+    {addresses[2]}  
+    
+    End test
+    """))
+
+    return search_results
 
 
 def return_search_results(search):
