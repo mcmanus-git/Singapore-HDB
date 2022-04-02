@@ -11,14 +11,6 @@ from dash.dependencies import Input, Output
 from address_search import return_search_results
 import time
 
-# test_query = 'select id from resale_prices_norm limit 1;'
-
-# engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_PG.username}:{Capstone_AWS_PG.password}@{Capstone_AWS_PG.host}/capstone', echo=False)
-#
-# sql_alc_cnxn = engine.connect()
-# df = pd.read_sql(test_query, sql_alc_cnxn)
-
-
 nav = create_navbar()
 
 header_string = f'Welcome to home page!'
@@ -26,22 +18,7 @@ header = html.H1(header_string)
 
 markdown_text = dcc.Markdown("""
 # Test Header  
-Some placeholder text.  *Wow!* Green navbar.  Ok, that's pretty cool.  
-
-    >
-    > Block quotes are used to highlight text.
-    >
-
-e=mc^2  
-
-```python
-def get_something():
-    python = 'cool'
-    return python
-```  
-
-
-
+Please enter an address to search or select from the addresses to the left.
 """)
 
 
@@ -49,14 +26,17 @@ def create_page_home():
     layout = html.Div([
         nav,
         # Margin Top, Right, Bottom, Left
-        html.Div([header], style={'margin': '20px 200px 10px 200px', 'flex': 1}),
+        html.Div([header], style={'margin': '5% 10% 5% 10%', 'flex': 10, 'flex-direction': 'column',
+                                  'justify-content': 'left', 'text-align': 'center'}),
         html.Div([markdown_text,
                   dbc.Button("Button", outline=True, color="danger", className="me-1")
-                  ], style={'margin': '20px 200px 10px 200px', 'flex': 1}),
+                  ], style={'margin': '1% 10% 10% 10%', 'flex': 10}),
         html.Div([
-            html.I("Search Address"),
-            html.Br(),
-            dcc.Input(id='address_search_input', type='text', placeholder='Enter Address', debounce=True, style={'marginRight':'10px'}),
+            html.P("Search Address"),
+            dcc.Input(id='address_search_input', type='text', placeholder='Enter Address', debounce=True, style=dict(
+                width='30%',
+                # display='table-cell',
+            )),#{'marginRight':'10px'}),
             # html.Div(id='address_search_output'),
             dcc.Loading(
                 id="address_search_input_loading",
@@ -66,7 +46,9 @@ def create_page_home():
             ),
             # html.Div(id='address_search_output')
 
-        ], style={'margin': '20px 200px 10px 200px', 'flex': 1})
+        ], style={'margin': '5% 10% 10% 10%'})
+        #style={'margin': '20px 200px 10px 200px', 'flex': 1, 'flex-direction': 'column'})
+        # dict(display='flex', justifyContent='center')) # Another way
 
     ])
     return layout
