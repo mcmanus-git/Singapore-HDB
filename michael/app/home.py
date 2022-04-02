@@ -11,17 +11,17 @@ from dash.dependencies import Input, Output
 from address_search import return_search_results
 import time
 
-test_query = 'select id from resale_prices_norm limit 1;'
+# test_query = 'select id from resale_prices_norm limit 1;'
 
-engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_PG.username}:{Capstone_AWS_PG.password}@{Capstone_AWS_PG.host}/capstone', echo=False)
-
-sql_alc_cnxn = engine.connect()
-df = pd.read_sql(test_query, sql_alc_cnxn)
+# engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_PG.username}:{Capstone_AWS_PG.password}@{Capstone_AWS_PG.host}/capstone', echo=False)
+#
+# sql_alc_cnxn = engine.connect()
+# df = pd.read_sql(test_query, sql_alc_cnxn)
 
 
 nav = create_navbar()
 
-header_string = f'Welcome to home page!  {df.values[0]}'
+header_string = f'Welcome to home page!'
 header = html.H1(header_string)
 
 markdown_text = dcc.Markdown("""
