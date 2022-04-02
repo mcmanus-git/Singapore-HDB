@@ -4,12 +4,16 @@ from dash import dcc
 import dash_bootstrap_components as dbc
 from navbar import create_navbar
 import pandas as pd
-from MyCreds.mycreds import Capstone_AWS_PG
+from MyCreds.mycreds import Capstone_AWS_PG, MapBox
 from sqlalchemy import create_engine
 from app import app
 from dash.dependencies import Input, Output
 from address_search import return_search_results
 import time
+import plotly.express as px
+import geopandas as gpd
+
+
 
 nav = create_navbar()
 
@@ -22,12 +26,13 @@ Please enter an address to search or select from the addresses to the left.
 """)
 
 
-def create_page_home():
+def create_page_home(sg_base_map):
     layout = html.Div([
         nav,
         # Margin Top, Right, Bottom, Left
-        html.Div([header], style={'margin': '5% 10% 5% 10%', 'flex': 10, 'flex-direction': 'column',
-                                  'justify-content': 'left', 'text-align': 'center'}),
+        # html.Div([header], style={'margin': '5% 10% 5% 10%', 'flex': 10, 'flex-direction': 'column',
+        #                           'justify-content': 'left', 'text-align': 'center'}),
+        html.Div([dcc.Graph(figure=sg_base_map)]),
         html.Div([markdown_text,
                   dbc.Button("Button", outline=True, color="danger", className="me-1")
                   ], style={'margin': '1% 10% 10% 10%', 'flex': 10}),
