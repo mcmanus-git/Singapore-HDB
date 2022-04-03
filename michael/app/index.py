@@ -29,7 +29,9 @@ sg_base_map = px.scatter_mapbox(sg_map_data,
                                 # width=500,
                                 height=600,
                                 opacity=0.1,
-                                mapbox_style='carto-positron'#'carto-darkmatter'#'stamen-toner'#'stamen-watercolor' #'open-street-map'
+                                mapbox_style='carto-positron',
+                                # symbol='park'
+                                # # marker = {'size': 20, 'symbol': ["airport"]}
                                 )
 
 
