@@ -133,6 +133,6 @@ dmypy.json
 .DS_Store
 
 michael/.DS_Store
-michael/data/resale-flat-prices/resale_prices.pkl
+michael/data/resale-flat-prices-output/resale_prices.pkl
 
 stuart/cache
