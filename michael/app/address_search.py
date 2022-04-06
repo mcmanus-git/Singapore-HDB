@@ -37,11 +37,17 @@ def get_hdb_property_info():
 
 
 def create_address_inv_indx(df):
+    # address_inv_index = defaultdict(list)
+    # for i, address in enumerate((df['block_number'] + " " + df['street'] + " " + df['postal'].round(0).astype(int).astype(str))):
+    #     address = " ".join(*re.findall('(^\d+)(...+)', address)).replace('  ', ' ')
+    #     for word in address.split():
+    #         address_inv_index[word].append(int(df.iloc[i]['id']))
+
     address_inv_index = defaultdict(list)
-    for i, address in enumerate((df['block_number'] + " " + df['street'] + " " + df['postal'].round(0).astype(int).astype(str))):
+    for i, address in enumerate((df['block_number'] + " " + df['street'] + " " + df['postal'])):
         address = " ".join(*re.findall('(^\d+)(...+)', address)).replace('  ', ' ')
         for word in address.split():
-            address_inv_index[word].append(int(df.iloc[i]['id']))
+            address_inv_index[word].append(int(df.iloc[i]['building_id']))
 
     return address_inv_index
 
@@ -55,24 +61,20 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
     for word in search.split():
         search_vals[word].append(address_inv_indx[word.upper()])
 
-    # most_probable_addresses = Counter([item for sublist in search_vals.values() for lst in sublist for item in lst]).most_common()[:n_results]
-    # addresses = hdb[hdb['id'].isin([most_probable_addresses[i][0] for i, index in enumerate(most_probable_addresses)])][['id', 'block_number', 'street', 'postal']].values
-
-
     most_probable_addresses = Counter([item for sublist in search_vals.values() for lst in sublist for item in lst]).most_common()[:n_results]
 
     address_ids = [most_probable_addresses[i][0] for i, _ in enumerate(most_probable_addresses)]
 
     addresses = pd.DataFrame()
     for id in address_ids:
-        addresses = pd.concat([addresses, hdb[hdb['id'] == id]])
+        addresses = pd.concat([addresses, hdb[hdb['building_id'] == id]])
 
-    addresses = addresses[['id', 'block_number', 'street', 'postal']].values
+    addresses = addresses[['building_id', 'block_number', 'street', 'postal']].values
 
     search_results = html.Div(dcc.Markdown(f"""Search Results:  
-    {addresses[0]}  
-    {addresses[1]}  
-    {addresses[2]}  
+    [{" ".join(addresses[0][1:])}]({int(addresses[0][0])})  
+    {" ".join(addresses[1][1:])}  
+    {" ".join(addresses[2][1:])}  
     
     End test
     """))
