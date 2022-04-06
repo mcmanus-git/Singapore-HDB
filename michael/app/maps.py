@@ -29,20 +29,8 @@ def create_sg_base_map():
     return sg_base_map
 
 
-def create_search_results_map(pathname):
-    pathname = pathname.strip("/")
+def create_search_results_map(df):
 
-    address_geo_search = f"""SELECT *
-FROM hdb_property_info a
-LEFT JOIN sg_buildings_postal_geo b
-ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name)
-where building_id = {pathname};"""
-
-    engine = DatabaseHelpers.engine
-    with engine.connect() as cnxn:
-        df = gpd.read_postgis(address_geo_search, cnxn, geom_col="geometry")
-
-    # print(df['geometry'].y[0])
     address_map = go.Figure(go.Scattermapbox(mode='markers+text',
                                              lon=[float(df['geometry'].x[0])],
                                              lat=[float(df['geometry'].y[0])],
@@ -60,15 +48,5 @@ where building_id = {pathname};"""
                               showlegend=False,
                               )
 
-    # px.set_mapbox_access_token(MapBox.token)
-    # address_map = px.scatter_mapbox(
-    #     df,
-    #     lat=df['geometry'].y,
-    #     lon=df['geometry'].x,
-    #     zoom=15,
-    #     height=600,
-    #     mapbox_style=map_style_global,
-    #     symbol="fa fa-shield" # {'symbol': 'marker'}
-    # )
 
     return address_map
