@@ -6,6 +6,7 @@ from collections import defaultdict, Counter
 import re
 from dash import dcc
 from dash import html
+from database_helpers import DatabaseHelpers
 
 
 def get_hdb_property_info():
@@ -14,19 +15,21 @@ def get_hdb_property_info():
     LEFT JOIN sg_buildings_postal_geo b
     ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name)"""
 
-    engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_PG.username}:{Capstone_AWS_PG.password}@{Capstone_AWS_PG.host}/capstone', echo=False)
+    # engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_PG.username}:{Capstone_AWS_PG.password}@{Capstone_AWS_PG.host}/capstone', echo=False)
+    engine = DatabaseHelpers.engine
 
     with engine.connect() as cnxn:
         df = gpd.read_postgis(hdb_geo_query, cnxn, geom_col='geometry')
 
     df.columns = ['block_number', 'street', 'max_floor_lvl', 'year_completed', 'residential',
-                   'commercial', 'market_hawker', 'miscellaneous', 'multistorey_carpark',
-                   'precinct_pavilion', 'bldg_contract_town', 'total_dwelling_units',
-                   '1room_sold', '2room_sold', '3room_sold', '4room_sold', '5room_sold',
-                   'exec_sold', 'multigen_sold', 'studio_apartment_sold', '1room_rental',
-                   '2room_rental', '3room_rental', 'other_room_rental', 'id', 'address',
-                   'blk_no', 'building', 'latitude', 'longitude', 'longtitude', 'postal',
-                   'road_name', 'short_r_name', 'searchval', 'x', 'y', 'geometry']
+                  'commercial', 'market_hawker', 'miscellaneous', 'multistorey_carpark',
+                  'precinct_pavilion', 'bldg_contract_town', 'total_dwelling_units',
+                  '1room_sold', '2room_sold', '3room_sold', '4room_sold', '5room_sold',
+                  'exec_sold', 'multigen_sold', 'studio_apartment_sold', '1room_rental',
+                  '2room_rental', '3room_rental', 'other_room_rental', 'building_id',
+                  'address', 'blk_no', 'building', 'latitude', 'longitude', 'longtitude',
+                  'postal', 'road_name', 'short_r_name', 'searchval', 'x', 'y',
+                  'address_to_match', 'geometry']
 
     df.dropna(inplace=True)
 
@@ -66,7 +69,7 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
 
     addresses = addresses[['id', 'block_number', 'street', 'postal']].values
 
-    search_results = html.Div( dcc.Markdown(f"""Search Results:  
+    search_results = html.Div(dcc.Markdown(f"""Search Results:  
     {addresses[0]}  
     {addresses[1]}  
     {addresses[2]}  
