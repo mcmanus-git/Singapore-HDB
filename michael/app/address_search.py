@@ -76,7 +76,6 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
     [{" ".join(addresses[1][1:])}]({int(addresses[1][0])})  
     [{" ".join(addresses[2][1:])}]({int(addresses[2][0])})  
     
-    End test
     """))
 
     return search_results

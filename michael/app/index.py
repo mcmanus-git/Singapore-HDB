@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 from page_home import create_page_home
 from page_blog import create_page_blog
-from page_3 import create_page_3
+from page_contact_us import create_page_contact_us
 from page_search_results import create_page_search_results
 from app import app
 import pandas as pd
@@ -28,8 +28,8 @@ app.layout = dbc.Container(html.Div([
 def display_page(pathname):
     if pathname == '/blog':
         return create_page_blog()
-    if pathname == '/page-3':
-        return create_page_3()
+    if pathname == '/contact-us':
+        return create_page_contact_us()
     if re.match('(/\d+)', pathname):
         return create_page_search_results(pathname)
     else:
