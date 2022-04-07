@@ -14,6 +14,8 @@ import plotly.express as px
 import geopandas as gpd
 
 
+# Note to self:
+# Margin Top, Right, Bottom, Left
 
 nav = create_navbar()
 
@@ -29,29 +31,37 @@ Please enter an address to search or select from the addresses to the left.
 def create_page_home(sg_base_map):
     layout = html.Div([
         nav,
-        # Margin Top, Right, Bottom, Left
+
         # html.Div([header], style={'margin': '5% 10% 5% 10%', 'flex': 10, 'flex-direction': 'column',
         #                           'justify-content': 'left', 'text-align': 'center'}),
         html.Div([dcc.Graph(figure=sg_base_map)]),
-        html.Div([markdown_text,
-                  dbc.Button("Button", outline=True, color="danger", className="me-1")
-                  ], style={'margin': '1% 10% 10% 10%', 'flex': 10}),
-        html.Div([
-            html.P("Search Address"),
-            dcc.Input(id='address_search_input', type='text', placeholder='Enter Address', debounce=True, style=dict(
-                width='30%',
-                # display='table-cell',
-            )),#{'marginRight':'10px'}),
-            # html.Div(id='address_search_output'),
-            dcc.Loading(
-                id="address_search_input_loading",
-                children=[html.Div(id="address_search_output")],
-                type="cube",
-                color='#4ABF72'
-            ),
-            # html.Div(id='address_search_output')
 
-        ], style={'margin': '5% 10% 10% 10%'})
+        html.Div([
+            dbc.Row([
+                dbc.Col(dcc.Markdown("Unfamiliar with Singapore?  Explore one of the addresses below.")),
+                dbc.Col(
+                    html.Div([
+                        # html.P("Search Address"),
+                        dcc.Input(id='address_search_input', type='text', placeholder='Enter Address', debounce=True, style=dict(
+                            width='70%'
+                        )),
+                        dcc.Loading(
+                            id="address_search_input_loading",
+                            children=[html.Div([html.Br(),
+                                                html.Div(id="address_search_output")])],
+                            type="cube",
+                            color='#4ABF72',
+                            # fullscreen=True
+                        ),
+
+                    ])
+                ),
+
+            ])
+        ],
+            style={'margin': '0% 10% 5% 10%'}
+        )
+
         #style={'margin': '20px 200px 10px 200px', 'flex': 1, 'flex-direction': 'column'})
         # dict(display='flex', justifyContent='center')) # Another way
 

@@ -25,20 +25,32 @@ where building_id = {pathname};"""
     return df
 
 
+def search_results_text(df):
+    results_string = f"""
+    Showing results for {df['address_to_match'].values[0]}
+     
+    """
+    return results_string
+
+
 def create_page_search_results(path):
 
     path = path.strip("/")
 
     df = get_address_details(path)
+    page_results_string = search_results_text(df)
 
     layout = html.Div([
         nav,
-        html.Div([html.H3(f"Showing results for {df['address_to_match'].values[0]}"),
-                  dcc.Graph(figure=create_search_results_map(df))
+        html.Div([dcc.Graph(figure=create_search_results_map(df))
                   ],
-                 style={'margin': '5% 10% 10% 10%'}
+                 style={'margin': '0% 5% 0% 5%'}
                  ),
+        html.Div([dcc.Markdown(page_results_string)],
+                 style={'margin': '0% 10% 0% 10%'}
+                 )
         # html.Div([dcc.Graph(figure=create_search_results_map(df))]
+        # html.H3(f"Showing results for {df['address_to_match'].values[0]}")
         #          )
     ])
     return layout

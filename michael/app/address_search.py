@@ -73,8 +73,8 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
 
     search_results = html.Div(dcc.Markdown(f"""Search Results:  
     [{" ".join(addresses[0][1:])}]({int(addresses[0][0])})  
-    {" ".join(addresses[1][1:])}  
-    {" ".join(addresses[2][1:])}  
+    [{" ".join(addresses[1][1:])}]({int(addresses[1][0])})  
+    [{" ".join(addresses[2][1:])}]({int(addresses[2][0])})  
     
     End test
     """))

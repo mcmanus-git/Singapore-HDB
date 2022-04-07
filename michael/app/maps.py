@@ -34,7 +34,7 @@ def create_search_results_map(df):
     address_map = go.Figure(go.Scattermapbox(mode='markers+text',
                                              lon=[float(df['geometry'].x[0])],
                                              lat=[float(df['geometry'].y[0])],
-                                             marker={'size': 20, 'symbol': ['star']},
+                                             marker={'size': 20, 'symbol': ['star'], 'color': '#4ABF72'},
                                              text=[*df['address_to_match'].values],
                                              textposition='bottom center'
                                              ))
