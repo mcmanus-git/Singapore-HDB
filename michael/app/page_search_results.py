@@ -12,11 +12,18 @@ nav = create_navbar()
 def get_address_details(pathname):
     pathname = pathname.strip("/")
 
-    address_geo_search = f"""SELECT *
-FROM hdb_property_info a
-LEFT JOIN sg_buildings_postal_geo b
-ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name)
-where building_id = {pathname};"""
+#     address_geo_search = f"""SELECT *
+# FROM hdb_property_info a
+# LEFT JOIN sg_buildings_postal_geo b
+# ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name)
+# where building_id = {pathname};"""
+
+    address_geo_search = f"""
+    select * from resale_location_features
+    where building_id = {pathname}
+    order by month desc
+    limit 1;
+    """
 
     engine = DatabaseHelpers.engine
     with engine.connect() as cnxn:
