@@ -33,10 +33,15 @@ def get_address_details(pathname):
 
 
 def search_results_text(df):
-    results_string = f"""
-    Showing results for {df['address_to_match'].values[0]}
+    results_string = dcc.Markdown(f"""
+### {df['address'].values[0]}
+    
+#### Most recent transaction information  
+Date: {df['month'].dt.strftime('%B %d, %Y')[0]}  
+Rooms: {df['n_rooms'].values[0]}  
+Sale Price: ${df['resale_price_norm'].values[0]:,.2f}  
      
-    """
+    """)
     return results_string
 
 
@@ -53,7 +58,7 @@ def create_page_search_results(path):
                   ],
                  style={'margin': '0% 5% 0% 5%'}
                  ),
-        html.Div([dcc.Markdown(page_results_string)],
+        html.Div([page_results_string],
                  style={'margin': '0% 10% 0% 10%'}
                  )
         # html.Div([dcc.Graph(figure=create_search_results_map(df))]

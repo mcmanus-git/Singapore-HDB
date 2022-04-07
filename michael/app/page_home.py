@@ -38,7 +38,8 @@ def create_page_home(sg_base_map):
 
         html.Div([
             dbc.Row([
-                dbc.Col(dcc.Markdown("Unfamiliar with Singapore?  Explore one of the addresses below.")),
+                dbc.Col(dcc.Markdown("""# Explore  
+Unfamiliar with Singapore?  Explore one of the addresses below.""")),
                 dbc.Col(
                     html.Div([
                         # html.P("Search Address"),
