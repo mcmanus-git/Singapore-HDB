@@ -1,6 +1,7 @@
 import geopandas as gpd
 import numpy as np
 import pandas as pd
+import pickle
 from sqlalchemy import create_engine
 from MyCreds.mycreds import Capstone_AWS_PG, MapBox
 from collections import defaultdict, Counter
@@ -39,16 +40,13 @@ def get_hdb_property_info():
 
 def create_address_inv_indx(df):
     # address_inv_index = defaultdict(list)
-    # for i, address in enumerate((df['block_number'] + " " + df['street'] + " " + df['postal'].round(0).astype(int).astype(str))):
+    # for i, address in enumerate((df['block_number'] + " " + df['street'] + " " + df['postal'])):
     #     address = " ".join(*re.findall('(^\d+)(...+)', address)).replace('  ', ' ')
     #     for word in address.split():
-    #         address_inv_index[word].append(int(df.iloc[i]['id']))
+    #         address_inv_index[word].append(int(df.iloc[i]['building_id']))
 
-    address_inv_index = defaultdict(list)
-    for i, address in enumerate((df['block_number'] + " " + df['street'] + " " + df['postal'])):
-        address = " ".join(*re.findall('(^\d+)(...+)', address)).replace('  ', ' ')
-        for word in address.split():
-            address_inv_index[word].append(int(df.iloc[i]['building_id']))
+    with open('address_inverted_index.pkl', 'rb') as p:
+        address_inv_index = pickle.load(p)
 
     return address_inv_index
 
