@@ -1,4 +1,5 @@
 import geopandas as gpd
+import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine
 from MyCreds.mycreds import Capstone_AWS_PG, MapBox
@@ -69,7 +70,7 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
     for id in address_ids:
         addresses = pd.concat([addresses, hdb[hdb['building_id'] == id]])
 
-    addresses = addresses[['building_id', 'block_number', 'street', 'postal']].values
+    addresses = addresses[['building_id', 'block_number', 'street', 'postal']].drop_duplicates().values
 
     search_results = html.Div(dcc.Markdown(f"""Search Results:  
     [{" ".join(addresses[0][1:])}]({int(addresses[0][0])})  
