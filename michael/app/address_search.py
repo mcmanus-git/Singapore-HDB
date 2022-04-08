@@ -38,7 +38,7 @@ def get_hdb_property_info():
     return df
 
 
-def create_address_inv_indx(df):
+def create_address_inv_indx():
     # address_inv_index = defaultdict(list)
     # for i, address in enumerate((df['block_number'] + " " + df['street'] + " " + df['postal'])):
     #     address = " ".join(*re.findall('(^\d+)(...+)', address)).replace('  ', ' ')
@@ -60,20 +60,48 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
     for word in search.split():
         search_vals[word].append(address_inv_indx[word.upper()])
 
-    most_probable_addresses = Counter([item for sublist in search_vals.values() for lst in sublist for item in lst]).most_common()[:n_results]
+    # __________________________________________________________________________________________________________
+    # Using Frequency KEEP
+    # most_probable_addresses = Counter([item for sublist in search_vals.values() for lst in sublist for item in lst]).most_common()[:n_results]
+    #
+    # address_ids = [most_probable_addresses[i][0] for i, _ in enumerate(most_probable_addresses)]
+    # __________________________________________________________________________________________________________
 
-    address_ids = [most_probable_addresses[i][0] for i, _ in enumerate(most_probable_addresses)]
+
+    # Example of Using Intersection to Find Probable Address IDs
+    # most_probable_addresses = list(set.intersection(*map(set, [address_inv_indx['33'],
+    #                                                            address_inv_indx['TELOK'],
+    #                                                            address_inv_indx['BLANGAH'],
+    #                                                            address_inv_indx['WAY']
+    #                                                            ]
+    #                                                      )))
+
+    address_ids = list(set.intersection(*map(set, [address_inv_indx[word.upper()] for word in search.split()])))
+
+
+
 
     addresses = pd.DataFrame()
     for id in address_ids:
         addresses = pd.concat([addresses, hdb[hdb['building_id'] == id]])
 
     addresses = addresses[['building_id', 'block_number', 'street', 'postal']].drop_duplicates().values
+    print(addresses, type(addresses))
+
+    address_links = ""
+    for i, a in enumerate(addresses):
+        address_links += f"[{' '.join(a[1:])}]({int(a[0])})  \n"
+
+
+
+
+    # [{" ".join(addresses[0][1:])}]({int(addresses[0][0])})
+    # [{" ".join(addresses[1][1:])}]({int(addresses[1][0])})
+    # [{" ".join(addresses[2][1:])}]({int(addresses[2][0])})
 
     search_results = html.Div(dcc.Markdown(f"""Search Results:  
-    [{" ".join(addresses[0][1:])}]({int(addresses[0][0])})  
-    [{" ".join(addresses[1][1:])}]({int(addresses[1][0])})  
-    [{" ".join(addresses[2][1:])}]({int(addresses[2][0])})  
+    {address_links}
+    
     
     """))
 
@@ -83,7 +111,7 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
 def return_search_results(search):
     n_results = 3
     hdb = get_hdb_property_info()
-    add_inv_idx = create_address_inv_indx(hdb)
+    add_inv_idx = create_address_inv_indx()
     search_results = get_search_results(search, n_results, add_inv_idx, hdb)
     return search_results
 

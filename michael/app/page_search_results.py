@@ -18,12 +18,17 @@ def get_address_details(pathname):
 # ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name)
 # where building_id = {pathname};"""
 
-    address_geo_search = f"""
-    select * from resale_location_features
-    where building_id = {pathname}
-    order by month desc
-    limit 1;
-    """
+    if pathname == 999999:
+        address_geo_search = f"""
+        
+        """
+    else:
+        address_geo_search = f"""
+        select * from resale_location_features
+        where building_id = {pathname}
+        order by month desc
+        limit 1;
+        """
 
     engine = DatabaseHelpers.engine
     with engine.connect() as cnxn:
