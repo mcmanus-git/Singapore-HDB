@@ -30,7 +30,7 @@ def display_page(pathname):
         return create_page_blog()
     if pathname == '/contact-us':
         return create_page_contact_us()
-    if re.match('(/\d+)', pathname):
+    if re.match(r'^(/\d+)', pathname):
         return create_page_search_results(pathname)
     else:
         sg_base_map = create_sg_base_map()
