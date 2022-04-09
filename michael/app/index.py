@@ -6,6 +6,7 @@ from page_home import create_page_home
 from page_blog import create_page_blog
 from page_contact_us import create_page_contact_us
 from page_search_results import create_page_search_results
+from page_explore import create_page_explore
 from app import app
 import pandas as pd
 import geopandas as gpd
@@ -32,6 +33,8 @@ def display_page(pathname):
         return create_page_contact_us()
     if re.match(r'^(/\d+)', pathname):
         return create_page_search_results(pathname)
+    if pathname == '/explore':
+        return create_page_explore()
     else:
         sg_base_map = create_sg_base_map()
         return create_page_home(sg_base_map)
