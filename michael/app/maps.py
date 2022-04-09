@@ -48,5 +48,4 @@ def create_search_results_map(df):
                               showlegend=False,
                               )
 
-
     return address_map

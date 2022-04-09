@@ -2,8 +2,8 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 import pickle
-from sqlalchemy import create_engine
-from MyCreds.mycreds import Capstone_AWS_PG, MapBox
+from database_helpers import DatabaseHelpers
+from MyCreds.mycreds import Capstone_AWS_SG, MapBox
 from collections import defaultdict, Counter
 import re
 from dash import dcc
@@ -12,28 +12,42 @@ from database_helpers import DatabaseHelpers
 
 
 def get_hdb_property_info():
-    hdb_geo_query = """SELECT *
+    # hdb_geo_query = """SELECT *
+    # FROM hdb_property_info a
+    # LEFT JOIN sg_buildings_postal_geo b
+    # ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name)"""
+    #
+    # # engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_PG.username}:{Capstone_AWS_PG.password}@{Capstone_AWS_PG.host}/capstone', echo=False)
+    # engine = DatabaseHelpers.engine
+    #
+    # with engine.connect() as cnxn:
+    #     df = gpd.read_postgis(hdb_geo_query, cnxn, geom_col='geometry')
+    #
+    # df.columns = ['block_number', 'street', 'max_floor_lvl', 'year_completed', 'residential',
+    #               'commercial', 'market_hawker', 'miscellaneous', 'multistorey_carpark',
+    #               'precinct_pavilion', 'bldg_contract_town', 'total_dwelling_units',
+    #               '1room_sold', '2room_sold', '3room_sold', '4room_sold', '5room_sold',
+    #               'exec_sold', 'multigen_sold', 'studio_apartment_sold', '1room_rental',
+    #               '2room_rental', '3room_rental', 'other_room_rental', 'building_id',
+    #               'address', 'blk_no', 'building', 'latitude', 'longitude', 'longtitude',
+    #               'postal', 'road_name', 'short_r_name', 'searchval', 'x', 'y',
+    #               'address_to_match', 'geometry']
+    #
+    # df.dropna(inplace=True)
+
+    sql = """SELECT a.blk_no, a.street, b.blk_no, b.short_r_name, b.postal, b.building_id
     FROM hdb_property_info a
     LEFT JOIN sg_buildings_postal_geo b
-    ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name)"""
+    ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name);"""
 
-    # engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_PG.username}:{Capstone_AWS_PG.password}@{Capstone_AWS_PG.host}/capstone', echo=False)
+
     engine = DatabaseHelpers.engine
 
     with engine.connect() as cnxn:
-        df = gpd.read_postgis(hdb_geo_query, cnxn, geom_col='geometry')
+        df = pd.read_sql(sql, cnxn)
 
-    df.columns = ['block_number', 'street', 'max_floor_lvl', 'year_completed', 'residential',
-                  'commercial', 'market_hawker', 'miscellaneous', 'multistorey_carpark',
-                  'precinct_pavilion', 'bldg_contract_town', 'total_dwelling_units',
-                  '1room_sold', '2room_sold', '3room_sold', '4room_sold', '5room_sold',
-                  'exec_sold', 'multigen_sold', 'studio_apartment_sold', '1room_rental',
-                  '2room_rental', '3room_rental', 'other_room_rental', 'building_id',
-                  'address', 'blk_no', 'building', 'latitude', 'longitude', 'longtitude',
-                  'postal', 'road_name', 'short_r_name', 'searchval', 'x', 'y',
-                  'address_to_match', 'geometry']
-
-    df.dropna(inplace=True)
+    df.columns = ['block_number', 'street', 'blk_no', 'short_r_name', 'postal', 'building_id']
+    df = df[['building_id', 'block_number', 'street', 'postal']]
 
     return df
 
@@ -53,15 +67,16 @@ def create_address_inv_indx():
 
 def get_search_results(search, n_results, address_inv_indx, hdb):
 
-    search_vals = defaultdict(list)
-
     search = " ".join(*re.findall('(^\d+)(...+)', search)).replace('  ', ' ')
-
-    for word in search.split():
-        search_vals[word].append(address_inv_indx[word.upper()])
 
     # __________________________________________________________________________________________________________
     # Using Frequency KEEP
+    # search_vals = defaultdict(list)
+
+    # for word in search.split():
+    #     search_vals[word].append(address_inv_indx[word.upper()])
+
+
     # most_probable_addresses = Counter([item for sublist in search_vals.values() for lst in sublist for item in lst]).most_common()[:n_results]
     #
     # address_ids = [most_probable_addresses[i][0] for i, _ in enumerate(most_probable_addresses)]
@@ -76,17 +91,19 @@ def get_search_results(search, n_results, address_inv_indx, hdb):
     #                                                            ]
     #                                                      )))
 
+    # addresses = pd.DataFrame()
+    # for id in address_ids:
+    #     addresses = pd.concat([addresses, hdb[hdb['building_id'] == id]])
+    #
+    # addresses = addresses[['building_id', 'block_number', 'street', 'postal']].drop_duplicates().values
+    # print(addresses, type(addresses))
+
     address_ids = list(set.intersection(*map(set, [address_inv_indx[word.upper()] for word in search.split()])))
 
+    addresses = hdb[hdb['building_id'].isin(address_ids)].drop_duplicates().values
 
 
 
-    addresses = pd.DataFrame()
-    for id in address_ids:
-        addresses = pd.concat([addresses, hdb[hdb['building_id'] == id]])
-
-    addresses = addresses[['building_id', 'block_number', 'street', 'postal']].drop_duplicates().values
-    print(addresses, type(addresses))
 
     address_links = ""
     for i, a in enumerate(addresses):
