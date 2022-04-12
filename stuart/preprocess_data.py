@@ -81,7 +81,6 @@ def get_features_targets(df,list_of_cols_to_ohe):
                         'price_per_sq_m',
                         'price_per_sq_ft_per_lease_yr',
                         'price_per_sq_m_per_lease_yr',
-                        'flat_type',
                         ]    
     # identify categorical columns
     all_cat_columns = ['town',
@@ -127,6 +126,7 @@ def get_features_targets(df,list_of_cols_to_ohe):
                           ]
         additional_cols = ['building_id',
                            'address_buildings',
+                           'address_to_match',
                            'blk_no',
                            'building',
                            'latitude',
@@ -144,7 +144,7 @@ def get_features_targets(df,list_of_cols_to_ohe):
         columns_to_drop = columns_to_drop + additional_ids + additional_cols + [x for x in all_cat_columns if x not in list_of_cols_to_ohe]
     else:
         columns_to_drop = columns_to_drop + [x for x in all_cat_columns if x not in list_of_cols_to_ohe]
-
+    # print(columns_to_drop)
     # drop excess columns
     df = df.drop(columns=columns_to_drop)
 
