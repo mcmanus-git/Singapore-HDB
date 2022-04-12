@@ -12,21 +12,13 @@ from address_search import return_search_results
 import time
 import plotly.express as px
 import geopandas as gpd
+from markdown_helper_home_page import get_explore_column_data
 
 
 # Note to self:
 # Margin Top, Right, Bottom, Left
 
 nav = create_navbar()
-
-header_string = f'Welcome to home page!'
-header = html.H1(header_string)
-
-markdown_text = dcc.Markdown("""
-# Test Header  
-Please enter an address to search or select from the addresses to the left.
-""")
-
 
 def create_page_home(sg_base_map):
     layout = html.Div([
@@ -38,8 +30,11 @@ def create_page_home(sg_base_map):
 
         html.Div([
             dbc.Row([
-                dbc.Col(dcc.Markdown("""# Explore  
-Unfamiliar with Singapore?  Explore one of the addresses below.""")),
+                dbc.Col(html.Div([dcc.Markdown("""# Explore  
+Unfamiliar with Singapore?  Explore one of the addresses below."""),
+                                  html.Br(),
+                                  dcc.Markdown(get_explore_column_data())
+                                  ])),
                 dbc.Col(
                     html.Div([
                         # html.P("Search Address"),
