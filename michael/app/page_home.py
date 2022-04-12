@@ -12,7 +12,7 @@ from address_search import return_search_results
 import time
 import plotly.express as px
 import geopandas as gpd
-from markdown_helper_home_page import get_explore_column_data
+from markdown_helper_home_page import create_explore_column_markdown
 
 
 # Note to self:
@@ -33,7 +33,7 @@ def create_page_home(sg_base_map):
                 dbc.Col(html.Div([dcc.Markdown("""# Explore  
 Unfamiliar with Singapore?  Explore one of the addresses below."""),
                                   html.Br(),
-                                  dcc.Markdown(get_explore_column_data())
+                                  dcc.Markdown(create_explore_column_markdown())
                                   ])),
                 dbc.Col(
                     html.Div([

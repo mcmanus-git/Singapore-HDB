@@ -28,11 +28,11 @@ def create_explore_column_markdown():
     highest, lowest, most = get_explore_column_data()
 
     explore_text = f"""## Highest Resale Price  
-"[{highest[0][0]}]({int(highest[0][1])})"  
+[{highest[0][0]}]({int(highest[0][1])})  
 ## Lowest Resale Price  
-"[{lowest[0][0]}]({int(lowest[0][1])})"  
+[{lowest[0][0]}]({int(lowest[0][1])})  
 ## Address Resold the Most Times  
-"[{most[0]}]({int(most[1])})"  
+[{most[0]}]({int(most[1])})  
   
   
 *Data based on the last 5 years.*"""
