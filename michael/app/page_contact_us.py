@@ -11,16 +11,17 @@ bio_text = \
 """
 ___  
 ## Tom Bresee  
-Tom is Tom  
-
+Tom's Information:    
+[LinkedIn](#) [GitHub](#)  
 ___  
 ## Michael McManus  
-Michael is an ass  
-[LinkedIn](https://www.linkedin.com/in/michael-mcmanus/) [GitHub](https://github.com/mcmanus-git) [Medium](https://medium.com/@mcmanus_data_works)
+Michael's Information:  
+[LinkedIn](https://www.linkedin.com/in/michael-mcmanus/) [GitHub](https://github.com/mcmanus-git) [Medium](https://medium.com/@mcmanus_data_works)  
 
 ___  
 ## Stuart Ong  
-Rhymes with Pong  
+Stuart's Information:    
+[LinkedIn](#) [GitHub](#)    
 
 """
 
