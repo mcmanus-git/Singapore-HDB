@@ -50,8 +50,6 @@ def create_page_blog():
     layout = html.Div([
         nav,
         # html.Div([dcc.Markdown(blog_text)], style={'margin': '5% 10% 5% 10%'}),
-        html.Div([html.Iframe(srcDoc=lines, height="1000px", width="100%")], style={'margin': '5% 10% 0% 10%',
-                                                                                  'height': '100%',
-                                                                                  'scrolling': 'no'})
+        html.Div([html.Iframe(srcDoc=lines, height="1000px", width="100%")], style={'margin': '0% 10% 0% 5%'})
     ])
     return layout
