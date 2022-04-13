@@ -23,17 +23,15 @@ nav = create_navbar()
 def create_page_home(sg_base_map):
     layout = html.Div([
         nav,
-
-        # html.Div([header], style={'margin': '5% 10% 5% 10%', 'flex': 10, 'flex-direction': 'column',
-        #                           'justify-content': 'left', 'text-align': 'center'}),
         html.Div([dcc.Graph(figure=sg_base_map)]),
-
         html.Div([
             dbc.Row([
                 dbc.Col(html.Div([dcc.Markdown("""# Explore  
 Unfamiliar with Singapore?  Explore one of the addresses below."""),
                                   html.Br(),
-                                  dcc.Markdown(create_explore_column_markdown())
+                                  dcc.Markdown(create_explore_column_markdown(),
+                                               style={"white-space": "pre"},
+                                               dangerously_allow_html=True)
                                   ])),
                 dbc.Col(
                     html.Div([
@@ -41,18 +39,10 @@ Unfamiliar with Singapore?  Explore one of the addresses below."""),
                         dcc.Input(id='address_search_input', type='text', placeholder='Enter Address', debounce=True, style=dict(
                             width='70%'
                         )),
-                        dcc.Loading(
-                            id="address_search_input_loading",
-                            children=[html.Div([html.Br(),
-                                                html.Div(id="address_search_output")])],
-                            type="cube",
-                            color='#4ABF72',
-                            # fullscreen=True
-                        ),
-
-                    ])
+                        html.Br(),
+                        html.Br(),
+                        html.Div(id="address_search_output")]),
                 ),
-
             ])
         ],
             style={'margin': '0% 10% 5% 10%'}
@@ -60,7 +50,6 @@ Unfamiliar with Singapore?  Explore one of the addresses below."""),
 
         #style={'margin': '20px 200px 10px 200px', 'flex': 1, 'flex-direction': 'column'})
         # dict(display='flex', justifyContent='center')) # Another way
-
     ])
     return layout
 

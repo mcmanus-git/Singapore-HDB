@@ -8,10 +8,6 @@ from page_contact_us import create_page_contact_us
 from page_search_results import create_page_search_results
 from page_explore import create_page_explore
 from app import app
-import pandas as pd
-import geopandas as gpd
-from MyCreds.mycreds import MapBox
-import plotly.express as px
 import re
 from maps import create_sg_base_map
 
@@ -20,7 +16,14 @@ app.config.suppress_callback_exceptions = True
 
 app.layout = dbc.Container(html.Div([
     dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content')
+    dcc.Loading(id="loading_page_content",
+                children=[
+                          html.Div(id='page-content')],
+                type="cube",
+                color='#4ABF72',
+                fullscreen=True
+                ),
+
 ]), fluid=True, className="dbc")
 
 
