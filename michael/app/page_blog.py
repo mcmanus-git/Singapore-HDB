@@ -41,8 +41,17 @@ What work?
 
 
 def create_page_blog():
+
+    with open('../app/assets/Blog HTML Test.html') as file:
+        lines = file.readlines()
+
+    lines = "".join(lines)
+
     layout = html.Div([
         nav,
-        html.Div([dcc.Markdown(blog_text)], style={'margin': '5% 10% 5% 10%'}),
+        # html.Div([dcc.Markdown(blog_text)], style={'margin': '5% 10% 5% 10%'}),
+        html.Div([html.Iframe(srcDoc=lines, height="1000px", width="100%")], style={'margin': '5% 10% 0% 10%',
+                                                                                  'height': '100%',
+                                                                                  'scrolling': 'no'})
     ])
     return layout
