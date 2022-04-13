@@ -1,5 +1,6 @@
 # import dash_html_components as html
 from dash import html
+import dash_bootstrap_components as dbc
 from navbar import create_navbar
 from maps import create_search_results_map
 from dash import dcc
@@ -50,12 +51,26 @@ Sale Price: ${df['resale_price_norm'].values[0]:,.2f}
     return results_string
 
 
+def model_results_text(df):
+
+    results_text = f"""# Model Results  
+#### Current Value: $1.5 M  
+\n\n
+#### Most Relevant Features:  
+\n\n
+    (chart)
+    """
+
+    return results_text
+
+
 def create_page_search_results(path):
 
     path = path.strip("/")
 
     df = get_address_details(path)
     page_results_string = search_results_text(df)
+    model_results_string = model_results_text(df)
 
     layout = html.Div([
         nav,
@@ -63,11 +78,14 @@ def create_page_search_results(path):
                   ],
                  style={'margin': '0% 5% 0% 5%'}
                  ),
-        html.Div([page_results_string],
+        html.Div([
+            dbc.Row([
+                dbc.Col(html.Div([page_results_string])),
+                dbc.Col(html.Div([dcc.Markdown(model_results_string)]))
+                     ]),
+
+        ],
                  style={'margin': '0% 10% 0% 10%'}
                  )
-        # html.Div([dcc.Graph(figure=create_search_results_map(df))]
-        # html.H3(f"Showing results for {df['address_to_match'].values[0]}")
-        #          )
     ])
     return layout
