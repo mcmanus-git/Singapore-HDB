@@ -7,19 +7,18 @@ Capstone - University of Michigan
 
 
 :Section Author: Tom Bresee
-:Version: 0.7
 :University: Michigan
 :Course: SIADS 697: Capstone
+:Version: 0.7
 
 
 
 |
 |
-|
 
 
-Information
-~~~~~~~~~~~~~~~~~~~
+HDB Housing Analysis
+~~~~~~~~~~~~~~~~~~~~~~~
 
 
 * `Raw Dataset Description and Download <https://lbd.udc.es/research/real-life-HAR-dataset/>`_ - A Public Domain Dataset For Real-life Human Activity Recognition Using Smartphone Sensors
@@ -33,22 +32,26 @@ Information
 * `Really good video of experiement in action <https://www.youtube.com/watch?v=XOEN9W05_4A>`_ 
 
 
+|
+
+
+**Jupyter Notebooks**
+
+* **Plot**:  Raw lat/long data files kept `here <https://github.com/tombresee/Michigan_Milestone_Initial_Work/blob/main/ENTER/RAW%20DATASET%20II/nodes.csv>`_.  The online arc gis like map from AoT is viewable `here <https://data.cityofchicago.org/Environment-Sustainable-Development/Array-of-Things-Locations-Map/2dng-xkng>`_, maybe we build our own version of this.  Should be easy to do, just taking lats/lons into some pretty picture.  
+
+
+* **Great Lakes**:  notebook 1
+
 
 |
 
 
+**Images**
 
 
-**Dataset II - Unsupervised Learning**
-
-* **Plot**:  Take the list of sensor node GPS coordinates, and plot nicely into something like Leaflet or some visualization, this is an easy but nice to show visualization technique that will get us points.  Raw lat/long data files kept `here <https://github.com/tombresee/Michigan_Milestone_Initial_Work/blob/main/ENTER/RAW%20DATASET%20II/nodes.csv>`_.  The online arc gis like map from AoT is viewable `here <https://data.cityofchicago.org/Environment-Sustainable-Development/Array-of-Things-Locations-Map/2dng-xkng>`_, maybe we build our own version of this.  Should be easy to do, just taking lats/lons into some pretty picture.  
+* **Images**:  notebook 1
 
 
-* **Great Lakes**:  Do some initial processing on the Michigan Great Lakes cluster, to build ability to later to ask for compute time for potential capstone extension analysis...
-
-
-
-|
 |
 
 
@@ -79,10 +82,6 @@ Files:
     offsets.csv     # data.csv.gz file byte offsets
 
 
-* `Array of Things Overview <http://arrayofthings.github.io/>`_
-
-
-* `Heroku Link <https://michigan-milestone.herokuapp.com/>`_
 
 
 .. figure:: https://github.com/tombresee/Michigan_Milestone_Initial_Work/raw/main/ENTER/IMAGES/AoT-Diagram.jpg
