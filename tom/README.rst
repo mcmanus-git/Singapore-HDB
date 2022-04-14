@@ -42,7 +42,8 @@ HDB Housing Analysis
 * **Plot**:  Raw lat/long data files kept `here <https://github.com/tombresee/Michigan_Milestone_Initial_Work/blob/main/ENTER/RAW%20DATASET%20II/nodes.csv>`_.  The online arc gis like map from AoT is viewable `here <https://data.cityofchicago.org/Environment-Sustainable-Development/Array-of-Things-Locations-Map/2dng-xkng>`_, maybe we build our own version of this.  Should be easy to do, just taking lats/lons into some pretty picture.  
 
 
-* **Great Lakes**:  notebook 1
+* **Great Lakes**:  something 
+
 
 
 |
@@ -61,21 +62,17 @@ HDB Housing Analysis
 Master Reference Links
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* `Dataset 1 <https://lbd.udc.es/research/real-life-HAR-dataset/>`_ - A Public Domain Dataset For Real-life Human Activity Recognition Using Smartphone Sensors
+* `Dataset 1 <https://lbd.udc.es/research/real-life-HAR-dataset/>`_ - A Public Domain Dataset
 
 * `R based Analysis <http://rstudio-pubs-static.s3.amazonaws.com/100601_62cc5079d5514969a72c34d3c8228a84.html>`_
 
-* `UCI Similar Dataset <https://archive.ics.uci.edu/ml/datasets/Smartphone-Based+Recognition+of+Human+Activities+and+Postural+Transitions>`_
-
 
 |
 |
 
 
 
-* `Dataset 2 <https://www.mcs.anl.gov/research/projects/waggle/downloads/datasets/index.php>`_ - We will use huge file 'AoT_Chicago.complete.latest.tar', where `this <https://github.com/waggle-sensor/waggle/blob/master/data/README.md>`_ explains how to unzip it 
-
-Files:
+Data Files:
 ::
     data.csv.gz	    # compressed file of all data values
     nodes.csv	    # list of nodes in the dataset and their metadata
@@ -86,11 +83,12 @@ Files:
 
 
 
-.. figure:: https://github.com/tombresee/Michigan_Milestone_Initial_Work/raw/main/ENTER/IMAGES/AoT-Diagram.jpg
+
+.. figure:: <insert>
    :scale: 50 %
    :alt: map to buried treasure
-
    Fig:  Current Architecture
+
 
 
 
