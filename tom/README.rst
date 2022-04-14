@@ -21,11 +21,13 @@ HDB Housing Analysis
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 
-* `Raw Dataset Description and Download <https://lbd.udc.es/research/real-life-HAR-dataset/>`_ - A Public Domain Dataset For Real-life Human Activity Recognition Using Smartphone Sensors
+**Background**
+
+* abc
+
+* def 
 
 * This `location <https://data.mendeley.com/datasets/3xm88g6m6d/2>`_ also has those above raw files (as the authors prefer to store here). Moderate corrections were posted to the above `here <https://www.mdpi.com/1424-8220/20/16/4650/htm>`_.  Original paper in html form is `here <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7218897/>`_. 
-
-
 
 * Note:  Related but not used original UCI-level dataset can be found `here <Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set>`_ 
 
