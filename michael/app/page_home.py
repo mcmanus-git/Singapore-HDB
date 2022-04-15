@@ -77,7 +77,7 @@ Unfamiliar with Singapore?  Explore one of the addresses below."""),
 )
 def get_address_information(n_clicks, address, flat_type, floor, sq_m):
     time.sleep(1)
-    search_results = return_search_results(address)
+    search_results = return_search_results(address, flat_type, floor, sq_m)
 
     # return f"Address: {search_results}"
     return search_results
