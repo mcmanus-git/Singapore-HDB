@@ -1,6 +1,6 @@
 
 Capstone - University of Michigan
-#####################################
+######################################
 
 
 |
@@ -20,17 +20,12 @@ HDB Housing Analysis
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 
-**Background**
-
-* bullet
-
-* `Really good video of experiement in action <https://www.youtube.com/watch?v=XOEN9W05_4A>`_ 
+* `action <https://www.youtube.com/watch?v=XOEN9W05_4A>`_ 
 
 
 
 |  
 |
-
 
 
 
@@ -45,7 +40,6 @@ Jupyter Notebooks
 |
 
 
-
 Images
 ~~~~~~~~~~~~~~~~~~~
 
@@ -55,9 +49,24 @@ Images
 
 
 
+|
+|
+
+
+
+Feature Importances Output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* insert feature importances for model 1
+
+* insert feature importances for model 2 
+
+
+
 
 |
 |
+
 
 
 
@@ -79,10 +88,14 @@ General Observations
 
 * Singapore uses the metric system, thus sticking with meters (and not items like square feet)
 
+* A common approach to eliminating features is to describe their relative importance to a model, then eliminate weak features or combinations of features and re-evalute to see if the model fairs better during cross-validation.
+
+
 
 
 |
 |
+
 
 
 
@@ -93,11 +106,8 @@ Master Reference Links
 
 
 
-
 |
 |
-
-
 
 
 
@@ -110,11 +120,17 @@ Data Files:
 |
 
 
+
 ToDo:
 ::
-     do this
-     do that
-
+     plot feature importances (ranked) for baseline model
+     summarize baseline model results / predictions
+     improve plots from regression
+     show the gridsearch 
+     Optuna use
+     use that nice output from milestone II (blocks)
+     https://github.com/DistrictDataLabs/yellowbrick/blob/develop/yellowbrick/regressor/residuals.py
+     
 
 
 
