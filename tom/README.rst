@@ -38,8 +38,8 @@ HDB Housing Analysis
 Jupyter Notebooks
 ~~~~~~~~~~~~~~~~~~~
 
-* abc
-* def
+* EDA pt I of II `view <https://github.com/mcmanus-git/Singapore-HDB/blob/main/tom/nb_EDA_pt_I_of_II.ipynb>`_
+
 
 
 
