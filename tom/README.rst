@@ -12,10 +12,8 @@ Capstone - University of Michigan
 :Version: 0.7
 
 
-
 |
 |
-
 
 
 HDB Housing Analysis
@@ -35,11 +33,11 @@ HDB Housing Analysis
 
 
 
+
 Jupyter Notebooks
 ~~~~~~~~~~~~~~~~~~~
 
 * EDA pt I of II [`view <https://github.com/mcmanus-git/Singapore-HDB/blob/main/tom/nb_EDA_pt_I_of_II.ipynb>`_]
-
 
 
 
@@ -54,7 +52,6 @@ Images
 * Correlation Plot of all base features `full image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_matrix_baseline.png>`_ &ensp; [`triangular image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_matrix_baseline_triangular.png>`_]
 
 * Correlation normed price to all other features [`image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_with_price_per-sqm_normed.png>`_]
-
 
 
 
@@ -83,8 +80,10 @@ Observations
 * Singapore uses the metric system, thus sticking with meters (and not items like square feet)
 
 
+
 |
 |
+
 
 
 Master Reference Links
@@ -93,8 +92,12 @@ Master Reference Links
 * `Dataset 1 <https://lbd.udc.es/research/real-life-HAR-dataset/>`_ - A Public Domain Dataset
 
 
+
+
 |
 |
+
+
 
 
 
