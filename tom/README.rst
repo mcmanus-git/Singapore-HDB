@@ -17,6 +17,7 @@ Capstone - University of Michigan
 |
 
 
+
 HDB Housing Analysis
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -25,42 +26,35 @@ HDB Housing Analysis
 
 * bullet
 
-* Note:  Related but not used original UCI-level dataset can be found `here <Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set>`_ 
-
 * `Really good video of experiement in action <https://www.youtube.com/watch?v=XOEN9W05_4A>`_ 
 
 
+
 |  
+|
 
 
 
-**Images**
+Jupyter Notebooks
+~~~~~~~~~~~~~~~~~~~
+
+* abc
+* def
+
+
+
+|
+|
+
+
+
+Images
+~~~~~~~~~~~~~~~~~~~
 
 * Correlation Plot of all base features [`full image <>`_] [`triangular image <>`_]
-* 
+* Correlation normed price to all other features [`iamge <https://raw.githubusercontent.com/mcmanus-git/Singapore-HDB/main/tom/images/correlation_with_price_per-sqm_normed.png?token=GHSAT0AAAAAABROR7PV5DHKLANVQ4IUBMQOYSYY6WA>`_] 
+https://github.com/mcmanus-git/Singapore-HDB/blob/main/tom/images/correlation_with_price_per-sqm_normed.png
 
-
-|
-|
-
-
-Jupyter Notebooks
-~~~~~~~~~~~~~~~~~~~
-
-* abc
-* def
-
-
-|
-|
-
-
-
-Jupyter Notebooks
-~~~~~~~~~~~~~~~~~~~
-
-* abc
-* def
 
 
 |
@@ -91,7 +85,6 @@ Observations
 |
 
 
-
 Master Reference Links
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -112,12 +105,14 @@ Data Files:
     offsets.csv       # data.csv.gz file byte offsets
 
 
+|
+
 
 
 ToDo:
 ::
-    data.csv.gz       # compressed file of all data values
-    offsets.csv       # data.csv.gz file byte offsets
+    do this
+    do that
 
 
 
