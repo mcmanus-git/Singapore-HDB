@@ -52,8 +52,9 @@ Images
 ~~~~~~~~~~~~~~~~~~~
 
 * Correlation Plot of all base features [`full image <>`_] [`triangular image <>`_]
-* Correlation normed price to all other features [`iamge <https://raw.githubusercontent.com/mcmanus-git/Singapore-HDB/main/tom/images/correlation_with_price_per-sqm_normed.png?token=GHSAT0AAAAAABROR7PV5DHKLANVQ4IUBMQOYSYY6WA>`_] 
-https://github.com/mcmanus-git/Singapore-HDB/blob/main/tom/images/correlation_with_price_per-sqm_normed.png
+* Correlation normed price to all other features [`image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_with_price_per-sqm_normed.png>`_] 
+
+
 
 
 
