@@ -62,8 +62,8 @@ Images
 
 
 
-Observations
-~~~~~~~~~~~~~~
+General Observations
+~~~~~~~~~~~~~~~~~~~~~~~
 
 * Although lease remaining time can be calculated from the current year and lease start year, its correlation to the lease year was not very high.  Using both these variables together though seemed to increase model accuracy.
 
@@ -104,19 +104,16 @@ Master Reference Links
 Data Files:
 ::
     data.csv.gz	    # compressed file of all data values
-    nodes.csv	       # list of nodes in the dataset and their metadata
-    README.md	       # An explaination of the database fields 
-    sensors.csv	    # A list of sensors and their metadata
-    offsets.csv       # data.csv.gz file byte offsets
+
 
 
 |
-
+|
 
 
 ToDo:
 ::
-    do this
+      do this
     do that
 
 
