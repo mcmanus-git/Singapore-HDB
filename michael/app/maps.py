@@ -43,8 +43,8 @@ def create_search_results_map(df):
                                           style=map_style_global,
                                           center=go.layout.mapbox.Center(lat=df['geometry'].y[0],
                                                                          lon=df['geometry'].x[0]),
-                                          zoom=14,
-                                          pitch=80
+                                          zoom=15,
+                                          pitch=100
                                           ),
                               showlegend=False,
                               )

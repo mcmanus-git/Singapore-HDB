@@ -54,7 +54,7 @@ def prep_data_for_model(address, flat_type, df, sq_m):
     return df
 
 
-def search_results_text(df, a, address, sq_m, most_recent_transaction_date, most_recent_resale):
+def search_results_text(df, a, address, sq_m, most_recent_transaction_date, most_recent_resale, n_rooms):
     a = float(a[0])
     if sq_m == '':
         sq_m = df['floor_area_sqm'].values
@@ -64,7 +64,7 @@ def search_results_text(df, a, address, sq_m, most_recent_transaction_date, most
 
 
 #### Most Recent Transaction
-This property was last resold on {most_recent_transaction_date} for ${float(most_recent_resale):,.2f}
+This last property sold at this address was a {n_rooms} bedroom sold on {most_recent_transaction_date} for ${float(most_recent_resale):,.2f}
     """
     # Date: {df['month'].dt.strftime('%B %d, %Y')[0]}
     # Sale Price: ${df['resale_price_norm'].values[0]:,.2f}
@@ -100,6 +100,7 @@ def create_page_search_results(pathname):
     search_results_map = create_search_results_map(df)
     most_recent_resale = df['resale_price'].values
     most_recent_transaction_date = df['month'].dt.strftime('%B %d, %Y')[0]
+    number_rooms = int(df['n_rooms'].values[0])
     df = prep_data_for_model(address, flat_type, df, sq_m)
 
     path = 'assets/model_xgb.pickle.dat'
@@ -107,7 +108,8 @@ def create_page_search_results(pathname):
 
     a, b = predict_price(path, objec_id_loc, df)
 
-    results_text = search_results_text(df, a, address, sq_m, most_recent_transaction_date, most_recent_resale)
+    results_text = search_results_text(df, a, address, sq_m, most_recent_transaction_date,
+                                       most_recent_resale, number_rooms)
 
     layout = html.Div([
         nav,
@@ -123,7 +125,7 @@ def create_page_search_results(pathname):
                             html.Div([dcc.Markdown(results_text)], style={'margin': '0% 0% 0% 7%'}),
                             html.Br(),
                             html.Br(),
-                            html.Div([html.Img(src=b, style={'height': '100%', 'width': '70%'})]),
+                            html.Div([html.Img(src=b, style={'height': '100%', 'width': '100%'})]),
                             html.Br(),
                             html.Br(),
                             # dbc.Row([
