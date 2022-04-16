@@ -6,34 +6,45 @@ from maps import create_search_results_map, create_sg_base_map
 from dash import dcc
 from database_helpers import DatabaseHelpers
 import geopandas as gpd
+from geopy.geocoders import Nominatim
+from datetime import datetime
+import pandas as pd
+from model import predict_price
 
 nav = create_navbar()
 
 
-def get_address_details(pathname):
-    pathname = pathname.strip("/")
+def get_address_details(lon, lat, features):
+    sql = f"""select {", ".join(features)},
+    st_setsrid(st_makepoint({lon}, {lat}), 4326)::geography <-> geometry::geography as distance
+    from resale_location_features
+    order by distance asc, month desc
+    limit 1;"""
 
-#     address_geo_search = f"""SELECT *
-# FROM hdb_property_info a
-# LEFT JOIN sg_buildings_postal_geo b
-# ON CONCAT(a.blk_no,' ',a.street) = CONCAT(b.blk_no,' ',b.short_r_name)
-# where building_id = {pathname};"""
-
-    if pathname == 999999:
-        address_geo_search = f"""
-        
-        """
-    else:
-        address_geo_search = f"""
-        select * from resale_location_features
-        where building_id = {pathname}
-        order by month desc
-        limit 1;
-        """
-
+    # engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_SG.username}:{Capstone_AWS_SG.password}@{Capstone_AWS_SG.host}/Capstone', echo=False)
     engine = DatabaseHelpers.engine
+
     with engine.connect() as cnxn:
-        df = gpd.read_postgis(address_geo_search, cnxn, geom_col="geometry")
+        df = gpd.read_postgis(sql, cnxn, geom_col='geometry')
+
+    return df
+
+
+def prep_data_for_model(address, flat_type, df, sq_m):
+    geolocator = Nominatim(user_agent="http://127.0.0.1:8050/")
+    location = geolocator.geocode(address.replace('-', ' '), namedetails=True)
+    towns_dict = DatabaseHelpers.towns_dict
+    if flat_type != 1:
+        # If flat_type isn't 1 bedroom add 1 to which town the address is in
+        town_key = f"town_{location.raw['display_name'].split(', ')[3].lower().replace(' ', '_')}"
+        if town_key in towns_dict.keys():
+            towns_dict[town_key] = 1
+        if flat_type:
+            towns_dict[f"flat_type_{flat_type.lower().replace(' ', '_').replace('-', '_')}"] = 1
+    df.loc[0, 'floor_area_sqm'] = int(sq_m)
+    df.loc[0, 'remaining_lease_years'] = (datetime.now().year - df['month'].dt.year).values
+    df = df.merge(pd.DataFrame(towns_dict, index=[0]), right_index=True, left_index=True)
+    df = df[DatabaseHelpers.model_must_have]
 
     return df
 
@@ -64,7 +75,29 @@ def model_results_text(df):
     return results_text
 
 
+
+
 def create_page_search_results(pathname):
+
+    # Get variables out of path name
+    search_params_from_url = pathname.split("?")[1].split("%")
+    address = search_params_from_url[0]
+    lon = search_params_from_url[1]
+    lat = search_params_from_url[2]
+    flat_type = search_params_from_url[3]
+    sq_m = search_params_from_url[4]
+
+    features = DatabaseHelpers.features
+
+    df = get_address_details(lon, lat, features)
+    df = prep_data_for_model(address, flat_type, df, sq_m)
+
+    path = 'assets/model_xgb.pickle.dat'
+    objec_id_loc = 'assets/object_id_dict.pickle'
+
+
+    a, b = predict_price(path, objec_id_loc, df)
+
 
     # path = path.strip("/")
 
@@ -83,7 +116,7 @@ def create_page_search_results(pathname):
         html.Div([
             dbc.Row([
                 dbc.Col(html.Div([pathname])),
-                # dbc.Col(html.Div([dcc.Markdown(model_results_string)]))
+                dbc.Col(html.Div([dcc.Markdown(f'{a}')]))
                      ]),
 
         ],

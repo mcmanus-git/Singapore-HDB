@@ -80,20 +80,23 @@ Unfamiliar with Singapore?  Explore one of the addresses below."""),
 )
 def get_address_information(n_clicks, address, flat_type, floor, sq_m):
     time.sleep(1)
-    # search_results = return_search_results(address, flat_type, floor, sq_m)
-    search_results = f"{address}"
-    # return f"Address: {search_results}"
-    # return search_results
-    # layout = create_page_search_results(n_clicks, address, flat_type, floor, sq_m)
+
     geolocator = Nominatim(user_agent="http://127.0.0.1:8050/")
     location = geolocator.geocode(address, namedetails=True)
 
-    def sneaky_backdoor_test(n_clicks, address, flat_type, floor, sq_m):
-        return n_clicks, address, flat_type, floor, sq_m
+    if address is None:
+        address = ''
+    elif flat_type is None:
+        flat_type = ''
+    elif floor is None:
+        floor = ''
+    elif sq_m is None:
+        sq_m = ''
 
-    # search_results = f"Address: {address}  Flat Type: {flat_type}"
-    # search_results = dcc.Markdown(f"""Search Results:  [{location.address}](/search-results?{location.address.replace(' ', '-')}%{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{floor}%{sq_m})""")
-    search_results = dcc.Markdown(f"""Search Results   \n[{location.address}](/search-results?%{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{sq_m})
+
+    d = location.address.split(', ')
+    address = f"{d[0]}-{d[1].replace(' ', '-')}-{d[3].replace(' ', '-')}-{d[-1]}"
+    search_results = dcc.Markdown(f"""Search Results   \n[{location.address}](/search-results?{address}%{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{sq_m})
     """)
 
     return search_results
