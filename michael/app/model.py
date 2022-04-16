@@ -41,12 +41,19 @@ def predict_price(model_loc, object_id_loc, prediction_df):
     # get SHAP waterfall
     buf = io.BytesIO()
     plt.clf()
+    plt.rc('font', size=10)
+    plt.xticks(fontsize=10)
     explainer = shap.TreeExplainer(model)
     shap_values = explainer(prediction_df)
+
     fig = shap.plots.waterfall(shap_values[0], max_display=15, show=False)
+    f = plt.gcf()
+    f.set_figheight(10)
+    f.set_figwidth(5)
 
 
-    plt.savefig(buf, format='png')
+
+    plt.savefig(buf, format='png', bbox_inches="tight")
     plt.close()
     data = base64.b64encode(buf.getbuffer()).decode("utf8")
     fig = "data:image/png;base64,{}".format(data)

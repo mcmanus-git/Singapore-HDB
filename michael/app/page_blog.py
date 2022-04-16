@@ -42,7 +42,8 @@ What work?
 
 def create_page_blog():
 
-    with open('../app/assets/Blog HTML Test.html') as file:
+    # with open('../app/assets/Blog HTML Test.html') as file:
+    with open('../app/assets/blog_check.html') as file:
         lines = file.readlines()
 
     lines = "".join(lines)
@@ -50,6 +51,6 @@ def create_page_blog():
     layout = html.Div([
         nav,
         # html.Div([dcc.Markdown(blog_text)], style={'margin': '5% 10% 5% 10%'}),
-        html.Div([html.Iframe(srcDoc=lines, height="1000px", width="100%")], style={'margin': '0% 10% 0% 5%'})
+        html.Div([html.Iframe(srcDoc=lines, height="11000px", width="100%")], style={'margin': '0% 10% 0% 5%'})
     ])
     return layout
