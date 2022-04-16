@@ -73,10 +73,22 @@ from geopy.geocoders import Nominatim
 #     return search_results
 
 
+def address_search_query():
+
+    sql = f"""select {", ".join(DatabaseHelpers.features)},
+st_setsrid(st_makepoint(103.82243971608177, 1.2741913500000002), 4326)::geography <-> geometry::geography as distance
+from resale_location_features
+order by distance asc, month desc
+limit 1;"""
+
+
+    return sql
+
 def get_search_results(search, flat_type, floor, sq_m):
 
     geolocator = Nominatim(user_agent=Capstone_AWS_SG.geo_user_agent)
     search = geolocator.geocode(search)
+    address_links =
 
     search_results = html.Div(dcc.Markdown(f"""Search Results:  
     {address_links}
