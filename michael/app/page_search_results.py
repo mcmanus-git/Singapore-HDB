@@ -10,6 +10,7 @@ from geopy.geocoders import Nominatim
 from datetime import datetime
 import pandas as pd
 from model import predict_price
+import shap
 
 nav = create_navbar()
 
@@ -41,7 +42,9 @@ def prep_data_for_model(address, flat_type, df, sq_m):
             towns_dict[town_key] = 1
         if flat_type:
             towns_dict[f"flat_type_{flat_type.lower().replace(' ', '_').replace('-', '_')}"] = 1
-    df.loc[0, 'floor_area_sqm'] = int(sq_m)
+    # If sq_m is an empty string just use floor_area_sqm that's in the results table
+    if sq_m != '':
+        df.loc[0, 'floor_area_sqm'] = int(sq_m)
     df.loc[0, 'remaining_lease_years'] = (datetime.now().year - df['month'].dt.year).values
     df = df.merge(pd.DataFrame(towns_dict, index=[0]), right_index=True, left_index=True)
     df = df[DatabaseHelpers.model_must_have]
@@ -110,6 +113,10 @@ def create_page_search_results(pathname):
 
     a, b = predict_price(path, objec_id_loc, df)
 
+    # # waterfall = shap.plots.waterfall(b[0], max_display=15, show=True)
+    # waterfall = b.html()
+    # waterfall_html = f"<head>{shap.getjs()}</head><body>{waterfall.html()}</body>"
+
 
     # path = path.strip("/")
 
@@ -127,7 +134,7 @@ def create_page_search_results(pathname):
         # html.Div(id='address_search_output'),
         html.Div([
             dbc.Row([
-                dbc.Col(html.Div([pathname])),
+                dbc.Col(html.Div([html.Img(src=b)])),
                 dbc.Col(html.Div([dcc.Markdown(f'{a}')]))
                      ]),
 
