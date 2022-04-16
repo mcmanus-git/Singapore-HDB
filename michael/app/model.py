@@ -2,6 +2,7 @@ import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
 import re
+import xgboost
 
 # import shap for interpretation
 import shap # v0.39.0

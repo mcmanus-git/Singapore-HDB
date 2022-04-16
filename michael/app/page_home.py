@@ -96,7 +96,7 @@ def get_address_information(n_clicks, address, flat_type, floor, sq_m):
 
     d = location.address.split(', ')
     address = f"{d[0]}-{d[1].replace(' ', '-')}-{d[3].replace(' ', '-')}-{d[-1]}"
-    search_results = dcc.Markdown(f"""Search Results   \n[{location.address}](/search-results?{address}%{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{sq_m})
+    search_results = dcc.Markdown(f"""Search Results   \n[{location.address}](/search-results/{address}%{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{sq_m})
     """)
 
     return search_results

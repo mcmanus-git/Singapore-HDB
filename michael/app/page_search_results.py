@@ -78,11 +78,23 @@ def model_results_text(df):
 
 
 def create_page_search_results(pathname):
-
+    print(pathname)
     # Get variables out of path name
-    search_params_from_url = pathname.split("?")[1].split("%")
+    # search_params_from_url = pathname.split("?")[1].split("%")
+    # search_params_from_url = pathname.split("%")[1:]
+    # address = search_params_from_url[0]
+    # lon = search_params_from_url[1]
+    # lat = search_params_from_url[2]
+    # flat_type = search_params_from_url[3]
+    # sq_m = search_params_from_url[4]
+
+
+    search_params_from_url = pathname.strip("/search-results").split("%")
+
     address = search_params_from_url[0]
+    print(address)
     lon = search_params_from_url[1]
+    print(lon)
     lat = search_params_from_url[2]
     flat_type = search_params_from_url[3]
     sq_m = search_params_from_url[4]
