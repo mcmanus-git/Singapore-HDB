@@ -36,7 +36,6 @@ def display_page(pathname):
         return create_page_contact_us()
     # if re.match(r'^(/\d+)', pathname):
     if '/search-results' in pathname:
-        print(f"index {pathname}")
         return create_page_search_results(pathname)
     if pathname == '/explore':
         return create_page_explore()

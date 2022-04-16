@@ -22,7 +22,6 @@ def get_address_details(lon, lat, features):
     order by distance asc, month desc
     limit 1;"""
 
-    # engine = create_engine(f'postgresql+psycopg2://{Capstone_AWS_SG.username}:{Capstone_AWS_SG.password}@{Capstone_AWS_SG.host}/Capstone', echo=False)
     engine = DatabaseHelpers.engine
 
     with engine.connect() as cnxn:
@@ -45,28 +44,31 @@ def prep_data_for_model(address, flat_type, df, sq_m):
     # If sq_m is an empty string just use floor_area_sqm that's in the results table
     if sq_m != '':
         df.loc[0, 'floor_area_sqm'] = int(sq_m)
-    df.loc[0, 'remaining_lease_years'] = (datetime.now().year - df['month'].dt.year).values
+    df.loc[0, 'remaining_lease_years'] = (
+            df.loc[0, 'remaining_lease_years'] - (datetime.now().year - df['month'].dt.year)).values
+    # print((datetime.now().year - df['month'].dt.year).values)
     df = df.merge(pd.DataFrame(towns_dict, index=[0]), right_index=True, left_index=True)
     df = df[DatabaseHelpers.model_must_have]
 
     return df
 
 
-def search_results_text(df):
-    results_string = dcc.Markdown(f"""
-### {df['address'].values[0]}
-    
-#### Most recent transaction information  
-Date: {df['month'].dt.strftime('%B %d, %Y')[0]}  
-Rooms: {df['n_rooms'].values[0]}  
-Sale Price: ${df['resale_price_norm'].values[0]:,.2f}  
-     
-    """)
+def search_results_text(df, a, address, sq_m):
+    a = float(a[0])
+    if sq_m == '':
+        sq_m = df['floor_area_sqm'].values
+    results_string = f"""
+## Estimated Resale:  
+- ${(a * int(sq_m) * int(df['remaining_lease_years'].values[0])):,.2f}
+- ${a:.2f} per square meter
+    """
+    # Date: {df['month'].dt.strftime('%B %d, %Y')[0]}
+    # Sale Price: ${df['resale_price_norm'].values[0]:,.2f}
+    # print(df['remaining_lease_years'].values)
     return results_string
 
 
 def model_results_text(df):
-
     results_text = f"""# Model Results  
 #### Current Value: $1.5 M  
 \n\n
@@ -78,26 +80,12 @@ def model_results_text(df):
     return results_text
 
 
-
-
 def create_page_search_results(pathname):
-    print(pathname)
     # Get variables out of path name
-    # search_params_from_url = pathname.split("?")[1].split("%")
-    # search_params_from_url = pathname.split("%")[1:]
-    # address = search_params_from_url[0]
-    # lon = search_params_from_url[1]
-    # lat = search_params_from_url[2]
-    # flat_type = search_params_from_url[3]
-    # sq_m = search_params_from_url[4]
-
-
     search_params_from_url = pathname.strip("/search-results").split("%")
 
     address = search_params_from_url[0]
-    print(address)
     lon = search_params_from_url[1]
-    print(lon)
     lat = search_params_from_url[2]
     flat_type = search_params_from_url[3]
     sq_m = search_params_from_url[4]
@@ -110,19 +98,9 @@ def create_page_search_results(pathname):
     path = 'assets/model_xgb.pickle.dat'
     objec_id_loc = 'assets/object_id_dict.pickle'
 
-
     a, b = predict_price(path, objec_id_loc, df)
 
-    # # waterfall = shap.plots.waterfall(b[0], max_display=15, show=True)
-    # waterfall = b.html()
-    # waterfall_html = f"<head>{shap.getjs()}</head><body>{waterfall.html()}</body>"
-
-
-    # path = path.strip("/")
-
-    # df = get_address_details(path)
-    # page_results_string = search_results_text(df)
-    # model_results_string = model_results_text(df)
+    results_text = search_results_text(df, a, address, sq_m)
 
     layout = html.Div([
         nav,
@@ -132,14 +110,22 @@ def create_page_search_results(pathname):
                  style={'margin': '0% 5% 0% 5%'}
                  ),
         # html.Div(id='address_search_output'),
-        html.Div([
-            dbc.Row([
-                dbc.Col(html.Div([html.Img(src=b)])),
-                dbc.Col(html.Div([dcc.Markdown(f'{a}')]))
-                     ]),
-
-        ],
-                 style={'margin': '0% 10% 0% 10%'}
-                 )
+        html.Div([html.Div([html.H1(f"{address.replace('-', ' ')}", style={'textAlign': 'center'}),
+                            html.Br(),
+                            html.Br(),
+                            html.Div([dcc.Markdown(results_text)], style={'margin': '0% 0% 0% 7%'}),
+                            html.Br(),
+                            html.Br(),
+                            html.Div([html.Img(src=b, style={'height': '70%', 'width': '70%'})]),
+                            html.Br(),
+                            html.Br(),
+                            # dbc.Row([
+                            #     dbc.Col(html.Div([dcc.Markdown(results_text)])),
+                            #     dbc.Col(html.Div([html.Img(src=b, style={'height': '100%', 'width': '100%'})]))
+                            # ]),
+                            ],
+                           style={'margin': '0% 10% 0% 10%'}
+                           )
+                  ])
     ])
     return layout

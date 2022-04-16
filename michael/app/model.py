@@ -17,7 +17,6 @@ def predict_price(model_loc, object_id_loc, prediction_df):
 
     # predict values
     prediction = model.predict(prediction_df)
-    print(prediction)
 
     # update dataframe columns names for printing in SHAP
 
@@ -48,12 +47,10 @@ def predict_price(model_loc, object_id_loc, prediction_df):
 
     fig = shap.plots.waterfall(shap_values[0], max_display=15, show=False)
     f = plt.gcf()
-    f.set_figheight(10)
-    f.set_figwidth(5)
+    # f.set_figheight(10)
+    # f.set_figwidth(5)
 
-
-
-    plt.savefig(buf, format='png', bbox_inches="tight")
+    plt.savefig(buf, format='jpeg', quality=95, bbox_inches="tight", transparent=True, optimize=True)
     plt.close()
     data = base64.b64encode(buf.getbuffer()).decode("utf8")
     fig = "data:image/png;base64,{}".format(data)
@@ -61,8 +58,6 @@ def predict_price(model_loc, object_id_loc, prediction_df):
 
     # fig = shap.plots.waterfall(shap_values[0])
     # shap_html = f"<head>{shap.getjs()}</head><body>{fig.html()}</body>"
-
-    print(type(fig))
 
     # plt.savefig('prediction.png',bbox_inches='tight',transparent=True,dpi=500)
 
