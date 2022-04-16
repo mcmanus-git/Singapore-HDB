@@ -35,7 +35,7 @@ def create_search_results_map(df):
                                              lon=[float(df['geometry'].x[0])],
                                              lat=[float(df['geometry'].y[0])],
                                              marker={'size': 20, 'symbol': ['star'], 'color': '#4ABF72'},
-                                             text=[*df['address_to_match'].values],
+                                             text=[*df['address'].values],
                                              textposition='bottom center'
                                              ))
 
@@ -43,7 +43,8 @@ def create_search_results_map(df):
                                           style=map_style_global,
                                           center=go.layout.mapbox.Center(lat=df['geometry'].y[0],
                                                                          lon=df['geometry'].x[0]),
-                                          zoom=12
+                                          zoom=14,
+                                          pitch=80
                                           ),
                               showlegend=False,
                               )

@@ -50,7 +50,7 @@ def predict_price(model_loc, object_id_loc, prediction_df):
     # f.set_figheight(10)
     # f.set_figwidth(5)
 
-    plt.savefig(buf, format='jpeg', quality=95, bbox_inches="tight", transparent=True, optimize=True)
+    plt.savefig(buf, format='png', bbox_inches="tight", transparent=True)
     plt.close()
     data = base64.b64encode(buf.getbuffer()).decode("utf8")
     fig = "data:image/png;base64,{}".format(data)

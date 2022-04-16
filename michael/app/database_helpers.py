@@ -8,6 +8,8 @@ class DatabaseHelpers:
     features = ['building_id',
                 'geometry',
                 'month',
+                'resale_price',
+                'address',
                 'storey_range_min',
                 'storey_range_max',
                 'n_rooms',
