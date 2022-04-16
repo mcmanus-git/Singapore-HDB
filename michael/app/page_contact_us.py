@@ -11,17 +11,17 @@ bio_text = \
 """
 ___  
 ## Tom Bresee  
-Tom's Information:    
-[LinkedIn](#) [GitHub](#)  
+
+[LinkedIn](https://www.linkedin.com/in/tombresee/) | [GitHub](https://github.com/tombresee) | tbresee@umich.edu
 ___  
 ## Michael McManus  
-Michael's Information:  
-[LinkedIn](https://www.linkedin.com/in/michael-mcmanus/) [GitHub](https://github.com/mcmanus-git) [Medium](https://medium.com/@mcmanus_data_works)  
+
+[LinkedIn](https://www.linkedin.com/in/michael-mcmanus/) | [GitHub](https://github.com/mcmanus-git) | [Medium](https://medium.com/@mcmanus_data_works) | msmcmanu@umich.edu  
 
 ___  
 ## Stuart Ong  
-Stuart's Information:    
-[LinkedIn](#) [GitHub](#)    
+
+[LinkedIn](#) | [GitHub](#)    
 
 """
 

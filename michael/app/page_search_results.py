@@ -64,7 +64,7 @@ def search_results_text(df, a, address, sq_m, most_recent_transaction_date, most
 
 
 #### Most Recent Transaction
-This last property sold at this address was a {n_rooms} bedroom sold on {most_recent_transaction_date} for ${float(most_recent_resale):,.2f}
+The last property sold at this address was a {n_rooms} bedroom sold on {most_recent_transaction_date} for ${float(most_recent_resale):,.2f}
     """
     # Date: {df['month'].dt.strftime('%B %d, %Y')[0]}
     # Sale Price: ${df['resale_price_norm'].values[0]:,.2f}
