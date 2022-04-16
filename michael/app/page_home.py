@@ -14,6 +14,8 @@ import time
 import plotly.express as px
 import geopandas as gpd
 from markdown_helper_home_page import create_explore_column_markdown
+from page_search_results import create_page_search_results
+from geopy.geocoders import Nominatim
 
 # Note to self:
 # Margin Top, Right, Bottom, Left
@@ -33,7 +35,7 @@ def create_page_home(sg_base_map):
             ], style={'display': 'inline-block', 'margin': '0% 0% 0% 0%'}
             ),
             html.Div([
-                dcc.Dropdown(['1 Room', '2 Room', '3 Room', '4 Room', '5 Room', 'Multi-Generation', 'Executive'], placeholder='Rooms', id='flat_type_search_input'),
+                dcc.Dropdown(['1 Room', '2 Room', '3 Room', '4 Room', '5 Room', 'Multi Generation', 'Executive'], placeholder='Rooms', id='flat_type_search_input'),
             ], style={'display': 'inline-block', 'vertical-align': 'middle', 'margin': '0% 1% 0% 1%', 'width': '20%'}
             ),
             html.Div([
@@ -45,7 +47,8 @@ def create_page_home(sg_base_map):
             ], style={'display': 'inline-block', 'margin': '0% 1% 0% 1%'}
             ),
             html.Div([
-                dbc.Button(id='submit_address_search', n_clicks=0, children='Submit', color='success', style={'display': 'inline-block'})
+                dbc.Button(id='submit_address_search', n_clicks=0, children='Submit', color='success',
+                           style={'display': 'inline-block'})#, href=f"/search-results")
             ], style={'display': 'inline-block', 'margin': '0% 0% 0% 1%'}
             ),
             html.Br(),
@@ -77,7 +80,19 @@ Unfamiliar with Singapore?  Explore one of the addresses below."""),
 )
 def get_address_information(n_clicks, address, flat_type, floor, sq_m):
     time.sleep(1)
-    search_results = return_search_results(address, flat_type, floor, sq_m)
-
+    # search_results = return_search_results(address, flat_type, floor, sq_m)
+    search_results = f"{address}"
     # return f"Address: {search_results}"
+    # return search_results
+    # layout = create_page_search_results(n_clicks, address, flat_type, floor, sq_m)
+    geolocator = Nominatim(user_agent="http://127.0.0.1:8050/")
+    location = geolocator.geocode(address, namedetails=True)
+
+    def sneaky_backdoor_test(n_clicks, address, flat_type, floor, sq_m):
+        return n_clicks, address, flat_type, floor, sq_m
+
+    # search_results = f"Address: {address}  Flat Type: {flat_type}"
+    # search_results = dcc.Markdown(f"""Search Results:  [{location.address}](/search-results?{location.address.replace(' ', '-')}%{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{floor}%{sq_m})""")
+    search_results = dcc.Markdown(f"""Search Results:  \n[{location.address}](/search-results?{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{sq_m})""")
+
     return search_results

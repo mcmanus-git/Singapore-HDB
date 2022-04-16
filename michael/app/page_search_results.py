@@ -2,7 +2,7 @@
 from dash import html
 import dash_bootstrap_components as dbc
 from navbar import create_navbar
-from maps import create_search_results_map
+from maps import create_search_results_map, create_sg_base_map
 from dash import dcc
 from database_helpers import DatabaseHelpers
 import geopandas as gpd
@@ -64,24 +64,26 @@ def model_results_text(df):
     return results_text
 
 
-def create_page_search_results(path):
+def create_page_search_results(pathname):
 
-    path = path.strip("/")
+    # path = path.strip("/")
 
-    df = get_address_details(path)
-    page_results_string = search_results_text(df)
-    model_results_string = model_results_text(df)
+    # df = get_address_details(path)
+    # page_results_string = search_results_text(df)
+    # model_results_string = model_results_text(df)
 
     layout = html.Div([
         nav,
-        html.Div([dcc.Graph(figure=create_search_results_map(df))
+        # html.Div([dcc.Graph(figure=create_search_results_map(df))
+        html.Div([dcc.Graph(figure=create_sg_base_map())
                   ],
                  style={'margin': '0% 5% 0% 5%'}
                  ),
+        # html.Div(id='address_search_output'),
         html.Div([
             dbc.Row([
-                dbc.Col(html.Div([page_results_string])),
-                dbc.Col(html.Div([dcc.Markdown(model_results_string)]))
+                dbc.Col(html.Div([pathname])),
+                # dbc.Col(html.Div([dcc.Markdown(model_results_string)]))
                      ]),
 
         ],

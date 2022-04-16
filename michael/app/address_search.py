@@ -88,10 +88,10 @@ def get_search_results(search, flat_type, floor, sq_m):
 
     geolocator = Nominatim(user_agent=Capstone_AWS_SG.geo_user_agent)
     search = geolocator.geocode(search)
-    address_links =
+    # address_links =
 
     search_results = html.Div(dcc.Markdown(f"""Search Results:  
-    {address_links}
+    
 
 
     """))
