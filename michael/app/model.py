@@ -5,6 +5,10 @@ import re
 import xgboost
 import io
 import base64
+from datetime import datetime
+from geopy.geocoders import Nominatim
+from database_helpers import DatabaseHelpers
+
 
 # import shap for interpretation
 import shap # v0.39.0
@@ -62,3 +66,27 @@ def predict_price(model_loc, object_id_loc, prediction_df):
     # plt.savefig('prediction.png',bbox_inches='tight',transparent=True,dpi=500)
 
     return prediction, fig
+
+
+def prep_data_for_model(address, flat_type, df, sq_m):
+    geolocator = Nominatim(user_agent="http://127.0.0.1:8050/")
+    location = geolocator.geocode(address.replace('-', ' '), namedetails=True)
+    towns_dict = DatabaseHelpers.towns_dict
+    if flat_type != 1:
+        # If flat_type isn't 1 bedroom add 1 to which town the address is in
+        town_key = f"town_{location.raw['display_name'].split(', ')[3].lower().replace(' ', '_')}"
+        if town_key in towns_dict.keys():
+            towns_dict[town_key] = 1
+        if flat_type:
+            towns_dict[f"flat_type_{flat_type.lower().replace(' ', '_').replace('-', '_')}"] = 1
+    # If sq_m is an empty string just use floor_area_sqm that's in the results table
+    if sq_m != '':
+        df.loc[0, 'floor_area_sqm'] = int(sq_m)
+    df.loc[0, 'remaining_lease_years'] = (
+            df.loc[0, 'remaining_lease_years'] - (datetime.now().year - df['month'].dt.year)).values
+    print(f"Remaining Lease Years: {(df.loc[0, 'remaining_lease_years'] - (datetime.now().year - df['month'].dt.year)).values}")
+    # print((datetime.now().year - df['month'].dt.year).values)
+    df = df.merge(pd.DataFrame(towns_dict, index=[0]), right_index=True, left_index=True)
+    df = df[DatabaseHelpers.model_must_have]
+
+    return df

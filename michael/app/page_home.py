@@ -1,20 +1,12 @@
-# import dash_html_components as html
 from dash import html
 from dash import dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from navbar import create_navbar
-import pandas as pd
-from MyCreds.mycreds import Capstone_AWS_PG, MapBox
-from sqlalchemy import create_engine
 from app import app
 from dash.dependencies import Input, Output
-from address_search import return_search_results
 import time
-import plotly.express as px
-import geopandas as gpd
 from markdown_helper_home_page import create_explore_column_markdown
-from page_search_results import create_page_search_results
 from geopy.geocoders import Nominatim
 
 # Note to self:
@@ -96,7 +88,9 @@ def get_address_information(n_clicks, address, flat_type, floor, sq_m):
 
     d = location.address.split(', ')
     address = f"{d[0]}-{d[1].replace(' ', '-')}-{d[3].replace(' ', '-')}-{d[-1]}"
-    search_results = dcc.Markdown(f"""Search Results   \n[{location.address}](/search-results/{address}%{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{sq_m})
-    """)
+    search_results = html.Div([html.H3('Search Results', style={'color': '#4ABF72'}),
+                               html.Br(),
+                               dcc.Markdown(f"""[{location.address}](/search-results/{address}%{location.longitude}%{location.latitude}%{flat_type.replace(' ', '-')}%{sq_m})
+    """)], style={'color': 'red'})
 
     return search_results
