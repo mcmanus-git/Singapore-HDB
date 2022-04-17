@@ -1,9 +1,9 @@
 # import dash_html_components as html
 from dash import html, dcc
-from navbar import create_navbar
+from navbar import create_navbar, create_footer
 
 nav = create_navbar()
-
+discloser, footer = create_footer()
 header = html.H1('Contact Us')
 
 
@@ -29,6 +29,7 @@ def create_page_contact_us():
     layout = html.Div([
         nav,
         html.Div([header], style={'margin': '5% 10% 5% 10%', 'textAlign': 'center'}),
-        html.Div([dcc.Markdown(bio_text)], style={'margin': '5% 10% 5% 10%'})
+        html.Div([dcc.Markdown(bio_text)], style={'margin': '5% 10% 5% 10%'}),
+        footer
     ])
     return layout

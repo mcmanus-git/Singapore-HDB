@@ -1,10 +1,9 @@
 # import dash_html_components as html
 from dash import html, dcc
-from navbar import create_navbar
+from navbar import create_navbar, create_footer
 
 nav = create_navbar()
-
-# header = html.H3('Welcome to page 2!')
+discloser, footer = create_footer()
 
 
 blog_text = \
@@ -40,6 +39,7 @@ What work?
 """
 
 
+
 def create_page_blog():
 
     # with open('../app/assets/Blog HTML Test.html') as file:
@@ -51,6 +51,8 @@ def create_page_blog():
     layout = html.Div([
         nav,
         # html.Div([dcc.Markdown(blog_text)], style={'margin': '5% 10% 5% 10%'}),
-        html.Div([html.Iframe(srcDoc=lines, height="11000px", width="100%")], style={'margin': '0% 10% 0% 5%'})
+        html.Div([html.Iframe(srcDoc=lines, height="11000px", width="100%")], style={'margin': '0% 10% 0% 5%'}),
+        discloser,
+        footer
     ])
     return layout

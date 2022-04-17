@@ -1,5 +1,5 @@
 from dash import html
-from navbar import create_navbar
+from navbar import create_navbar, create_footer
 from maps import create_search_results_map
 from dash import dcc
 from database_helpers import DatabaseHelpers
@@ -8,6 +8,7 @@ import shap
 from address_search import get_address_details
 
 nav = create_navbar()
+discloser, footer = create_footer()
 
 
 def search_results_text(df, a, address, sq_m, most_recent_transaction_date, most_recent_resale, n_rooms):
@@ -76,6 +77,8 @@ def create_page_search_results(pathname):
                             ],
                            style={'margin': '0% 10% 0% 10%'}
                            )
-                  ])
+                  ]),
+        discloser,
+        footer
     ])
     return layout

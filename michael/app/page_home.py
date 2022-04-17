@@ -2,7 +2,7 @@ from dash import html
 from dash import dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-from navbar import create_navbar
+from navbar import create_navbar, create_footer
 from app import app
 from dash.dependencies import Input, Output
 import time
@@ -14,6 +14,7 @@ from geopy.geocoders import Nominatim
 # 4459 33 TELOK BLANGAH WAY
 
 nav = create_navbar()
+discloser, footer = create_footer()
 
 
 def create_page_home(sg_base_map):
@@ -56,7 +57,9 @@ Unfamiliar with Singapore?  Explore one of the addresses below."""),
                                    dangerously_allow_html=True)
                       ]),
         ],
-            style={'margin': '0% 10% 5% 10%'})
+            style={'margin': '0% 10% 5% 10%'}),
+        discloser,
+        footer
     ])
     return layout
 

@@ -1,4 +1,6 @@
 import dash_bootstrap_components as dbc
+import dash.html as html
+import dash_core_components as dcc
 
 
 def create_navbar():
@@ -26,3 +28,18 @@ def create_navbar():
     )
 
     return navbar
+
+
+def create_footer():
+    discloser = html.Div([dcc.Markdown('*Contains information from {name of dataset} accessed on dates throughout March\
+    and April 2022 from {source of data} which is made available under the terms of the [Singapore Open Data Licence \
+    version 1.0](https://data.gov.sg/open-data-licence)')], style={'margin': '10% 1% 0% 1%', 'font-size': '9px'})
+
+    footer = html.Footer([html.Div([' ']), html.Div(['© 2022 WhyAxis'],
+                                                    style={'margin': '0% 0% 0% 2%', 'font-size': '12px'}),
+                          html.Div([' '])], style={'background-color': '#4ABF72', 'color': 'white', 'height': '50px', 'left': 0}
+                                                   #'position': 'absolute', 'left': 0, 'bottom': 0, 'width': '100%', 'height': '50px'},
+
+                         )
+
+    return discloser, footer
