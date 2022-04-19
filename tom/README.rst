@@ -97,6 +97,8 @@ Correlations
 XGBoost
 ---------------
 
+**General:**
+
 * Although XGBoost training and prediction can be accelerated with CUDA-capable GPUs (allowing approximately 6X - 8X faster training vs conventional CPU), it should be noted that it gave *slightly* different results than the CPU-trained model. These differences were usually at the fourth or third decimal point level, but they did exist. XGBoost contains a parameter called the tree_method (tree construction algorithm), which is set to ``hist`` on CPU and set to hist or ``gpu_hist`` on GPU. 
 
 * It turns out that the tree method ``hist`` and ``gpu_hist`` algorithms are actually different. This was manifested in different prediction results for a larger type dataset (which ours was). 
@@ -126,6 +128,13 @@ XGBoost
 
 
 * `Reference <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/final_images/default_xgboost_regressor_parameters.png>`_ default extracted XGBoost parameters (starting point)
+
+
+**Modeling:**
+
+* Due to our GPU usage, we were able to iterate over set parameters for speed...
+
+* **max_depth** - as the dept increased, so the training time increased.  
 
 
 
