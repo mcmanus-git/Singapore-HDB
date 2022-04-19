@@ -6,7 +6,7 @@ Capstone
 |
 
 :Splash Page: 
-:Author: Tom Bresee
+:Section Author: Tom Bresee
 :Version: 2.0 
 :University: Michigan
 :Course: SIADS 697/698: Capstone
@@ -41,6 +41,7 @@ Jupyter Notebooks
 
 |
 |
+
 
 
 Images
