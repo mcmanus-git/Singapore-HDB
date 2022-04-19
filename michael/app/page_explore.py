@@ -3,6 +3,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from dash import html, dcc
 from navbar import create_navbar, create_footer
+from markdown_helper_home_page import create_explore_column_markdown
 from app import app
 from sqlalchemy import create_engine
 from MyCreds.mycreds import Capstone_AWS_SG, MapBox
@@ -14,12 +15,7 @@ discloser, footer = create_footer()
 
 
 def get_animation_df():
-    sql = """select mp.zone_id, mp."SUBZONE_N", mp.geometry,  avg(lf.resale_price) as avg_resale, min(lf.resale_price) as min_resale, max(lf.resale_price) as max_resale, count(distinct(transaction_id)) as count_resale, extract(year from lf.month) as transaction_year
-from master_plan_2019_subzone_boundary as mp
-         join resale_location_features as lf
-              on ST_Contains(mp.geometry, lf.geometry)
-
-group by transaction_year, mp.zone_id, mp."SUBZONE_N", mp.geometry;"""
+    sql = """select * from resale_subzone_boundary;"""
 
     #where extract(year from lf.month) > 2010
 
@@ -39,9 +35,10 @@ def create_animated_map(df):
                                                      hover_name="SUBZONE_N",
                                                      zoom=10,
                                                      color=df['avg_resale'],
-                                                     size = df['count_resale'],
+                                                     size=df['count_resale'],
                                                      color_continuous_scale=px.colors.cyclical.IceFire,
-                                                     size_max=15,
+                                                     size_max=25,
+                                                     range_color=[200000, 1200000],
                                                      height=600,
                                                      opacity=0.7,
                                                      mapbox_style='light',
@@ -54,8 +51,18 @@ def create_page_explore():
     animated_map = create_animated_map(df)
     layout = html.Div([
         nav,
-        html.Div([dcc.Markdown("Explore Page")], style={'margin': '5% 10% 5% 10%'}),
+        html.Div([dcc.Markdown("### Explore Singapore")], style={'margin': '5% 10% 5% 10%'}),
+        html.Div([dcc.Markdown("""Normalized HDB Resale Price over Year  
+        Circle Color: Average Price In Planning Zone over Period | Circle Size: Number of Transactions in Period""")],
+                 style={'margin': '1% 10% 0% 10%', 'font-size': '12px'}),
         html.Div([dcc.Graph(figure=animated_map)]),
+
+        html.Div([dcc.Markdown("""# Historical Stats  """),
+                  html.Br(),
+                  dcc.Markdown(create_explore_column_markdown(),
+                               style={"white-space": "pre"},
+                               dangerously_allow_html=True)
+                  ], style={'margin': '5% 10% 5% 10%'}),
         discloser,
         footer
 

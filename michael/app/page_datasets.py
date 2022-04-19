@@ -15,6 +15,8 @@ All data sources derived from [data.gov/sg](https://data.gov.sg/) during the mon
 
 ## Datasets Used in this Analysis
 
+### C
+- [Conservation Area Map](https://data.gov.sg/dataset/conservation-area-map)
 ### E
 - [Eating Establishments](https://data.gov.sg/dataset/eating-establishments)
 ### F

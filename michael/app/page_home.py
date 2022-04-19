@@ -49,10 +49,10 @@ def create_page_home(sg_base_map):
             html.Div(id='address_search_output'),
             html.Br(),
             html.Br(),
-            html.Div([dcc.Markdown("""# Explore  
-Unfamiliar with Singapore?  Explore one of the addresses below."""),
+            html.Div([dcc.Markdown("""# Explore
+Unfamiliar with Singapore?  Check out our [Explore Page](/explore)."""),
                       html.Br(),
-                      dcc.Markdown(create_explore_column_markdown(),
+                      dcc.Markdown("""Placeholder""",
                                    style={"white-space": "pre"},
                                    dangerously_allow_html=True)
                       ]),
