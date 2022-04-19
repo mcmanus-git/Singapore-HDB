@@ -15,21 +15,8 @@ Capstone
 
 
 
-.. toctree::
-   :maxdepth: 2
 
 
-
-You can use ``backticks`` for showing ``highlighted`` code.
-
-
-A cool bit of code::
-
-   Some cool Code
-
-.. code-block:: rst
-
-   A bit of **rst** which should be *highlighted* properly.
 
 
 
@@ -201,20 +188,22 @@ ToDo:
 
 
 
-.. highlight:: rst
-
-First Steps with Sphinx
-=======================
-
-This document is meant to give a tutorial-like overview of all common tasks
-while using Sphinx.
-
-The green arrows designate "more info" links leading to advanced sections about
-the described task.
+You can use ``backticks`` for showing ``highlighted`` code.
 
 
-Setting up the documentation sources
-------------------------------------
+A cool bit of code::
+
+   Some cool Code
+
+.. code-block:: rst
+
+   A bit of **rst** which should be *highlighted* properly.
+
+
+---
+
+
+
 
 The root directory of a Sphinx collection of reStructuredText document sources
 is called the :term:`source directory`.  This directory also contains the Sphinx
@@ -474,7 +463,7 @@ More topics to be covered
           :alt: more info
 
 
-          
+
 
 |
 |
