@@ -194,18 +194,9 @@ ToDo:
 
 
 
+
 |
 |
-
-
-.. figure:: https://github.com/tombresee/Michigan_Milestone_Initial_Work/raw/main/ENTER/IMAGES/AoT-Diagram.jpg
-   :scale: 50 %
-   :alt: map to buried treasure
-
-   Current Architecture
-
-
-
 |
 |
 |
