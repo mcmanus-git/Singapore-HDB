@@ -31,9 +31,9 @@ def create_navbar():
 
 
 def create_footer():
-    discloser = html.Div([dcc.Markdown('*Contains information from {name of dataset} accessed on dates throughout March\
+    discloser = html.Div([dcc.Markdown('*Contains information from [datasets](/datasets) accessed throughout March\
     and April 2022 from {source of data} which is made available under the terms of the [Singapore Open Data Licence \
-    version 1.0](https://data.gov.sg/open-data-licence)')], style={'margin': '10% 1% 0% 1%', 'font-size': '9px'})
+    version 1.0](https://data.gov.sg/open-data-licence)')], style={'margin': '10% 1% 0% 1%', 'font-size': '10px'})
 
     footer = html.Footer([html.Div([' ']), html.Div(['© 2022 WhyAxis'],
                                                     style={'margin': '0% 0% 0% 2%', 'font-size': '12px'}),

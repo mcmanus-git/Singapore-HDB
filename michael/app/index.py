@@ -7,6 +7,7 @@ from page_blog import create_page_blog
 from page_contact_us import create_page_contact_us
 from page_search_results import create_page_search_results
 from page_explore import create_page_explore
+from page_datasets import create_datasets_page
 from app import app
 import re
 from maps import create_sg_base_map
@@ -39,6 +40,8 @@ def display_page(pathname):
         return create_page_search_results(pathname)
     if pathname == '/explore':
         return create_page_explore()
+    if pathname == '/datasets':
+        return create_datasets_page()
     else:
         sg_base_map = create_sg_base_map()
         return create_page_home(sg_base_map)
