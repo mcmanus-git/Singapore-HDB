@@ -21,11 +21,11 @@ Capstone
 Singapore Housing Analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Examining of Singapore HDB Flat Resale Pricing Values
+* Examining Singapore HDB Flat Resale Pricing Values via machine learning methods
 
-* More
+* Hyperparameter Tuning Optimization
 
-  *  In late
+  *  Adjusting parameters (results)
 
 
 
@@ -46,7 +46,7 @@ Jupyter Notebooks
 
 
 
-Images
+Image Results 
 ~~~~~~~~~~~~~~~~~~~
 
 * Correlation Plot of all base features [`full image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_matrix_baseline.png>`_] [`triangular image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_matrix_baseline_triangular.png>`_]
@@ -101,7 +101,7 @@ XGBoost
 
 * It turns out that the tree method ``hist`` and ``gpu_hist`` algorithms are actually different. This was manifested in different prediction results for a larger type dataset (which ours was). 
 
-  * Why is this important ? Because hyperparameter tuning methods such as `GridSearch` is inherently brute force, **so any edge in training time is a massive advantage**, especially for tuning in our case as much as we needed. 
+  * Why is this important ? Because hyperparameter tuning methods such as `GridSearch` are inherently brute force, **so any edge in training time is a massive advantage**, especially for tuning in our case as much as we needed. 
 
 
 * **Note:** - GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. The tree_method hist is not the CPU version of the tree_method gpu_hist. They are different algorithms.
