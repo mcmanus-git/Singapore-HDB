@@ -98,6 +98,44 @@ General Observations
 
 
 
+
+|
+|
+
+
+
+
+Appendix
+~~~~~~~~~~~
+
+* The Array of Things (AoT) is an experimental urban measurement system comprising programmable, modular "nodes" with sensors and computing capability so that they can analyze data internally, for instance counting the number of vehicles at an intersection (and then deleting the image data rather than sending it to a data center). AoT nodes are installed in Chicago and a growing number of partner cities to collect real-time data on the city’s environment, infrastructure, and activity for research and public use. The concept of AoT is analogous to a “fitness tracker” for the city, measuring factors that impact livability in the urban environment, such as climate, air quality, and noise.  
+
+
+* AoT is **now** an anchor partner in a new NSF-funded project called SAGE.
+
+  *  In late 2018 the AoT team proposed a new effort to the National Science Foundation's Mid-Scale Research Infrastuructre program, with an expanded vision, building on all of the lessons learned from the AoT project and creating a new hardware and software infrastructure. Successfully funded with a start of October 2019, the new NSF-funded project, called SAGE: A Software-Defined Sensor Network, will result in a migration of AoT functions to new devices in 2021. SAGE is led by Northwestern University in partnership with the Discovery Partners Institute (University of Illinois), University of Chicago, Argonne National Laboratory, the University of Colorado, the University of California-San Diego, Northern Ill
+
+
+|
+|
+
+
+----------
+Citations
+----------
+
+`Journal of Open Source Software article <http://joss.theoj.org/papers/10.21105/joss.00205>`_.
+
+    L. McInnes, J. Healy, S. Astels, *hdbscan: Hierarchical density based clustering*
+    In: Journal of Open Source Software, The Open Journal, volume 2, number 11.
+    2017
+    
+
+    McInnes L, Healy J. *Accelerated Hierarchical Density Based Clustering* 
+    In: 2017 IEEE International Conference on Data Mining Workshops (ICDMW), IEEE, pp 33-42.
+    2017
+
+
 |
 |
 
@@ -147,49 +185,6 @@ ToDo:
 
 |
 |
-
-
-
-
-Appendix
-~~~~~~~~~~~
-
-* The Array of Things (AoT) is an experimental urban measurement system comprising programmable, modular "nodes" with sensors and computing capability so that they can analyze data internally, for instance counting the number of vehicles at an intersection (and then deleting the image data rather than sending it to a data center). AoT nodes are installed in Chicago and a growing number of partner cities to collect real-time data on the city’s environment, infrastructure, and activity for research and public use. The concept of AoT is analogous to a “fitness tracker” for the city, measuring factors that impact livability in the urban environment, such as climate, air quality, and noise.  
-
-
-* AoT is **now** an anchor partner in a new NSF-funded project called SAGE.
-
-  *  In late 2018 the AoT team proposed a new effort to the National Science Foundation's Mid-Scale Research Infrastuructre program, with an expanded vision, building on all of the lessons learned from the AoT project and creating a new hardware and software infrastructure. Successfully funded with a start of October 2019, the new NSF-funded project, called SAGE: A Software-Defined Sensor Network, will result in a migration of AoT functions to new devices in 2021. SAGE is led by Northwestern University in partnership with the Discovery Partners Institute (University of Illinois), University of Chicago, Argonne National Laboratory, the University of Colorado, the University of California-San Diego, Northern Ill
-
-
-|
-
-
-----------
-Citations
-----------
-
-`Journal of Open Source Software article <http://joss.theoj.org/papers/10.21105/joss.00205>`_.
-
-    L. McInnes, J. Healy, S. Astels, *hdbscan: Hierarchical density based clustering*
-    In: Journal of Open Source Software, The Open Journal, volume 2, number 11.
-    2017
-    
-
-    McInnes L, Healy J. *Accelerated Hierarchical Density Based Clustering* 
-    In: 2017 IEEE International Conference on Data Mining Workshops (ICDMW), IEEE, pp 33-42.
-    2017
-
-
-|
-
-
-
-
-
-
-
-
 |
 |
 |
