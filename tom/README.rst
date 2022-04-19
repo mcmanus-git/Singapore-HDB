@@ -5,13 +5,13 @@ Capstone
 
 |
 
+
 :Splash Page: 
 :Section Author: Tom Bresee
 :Version: 2.0 
 :Institution: University of Michigan
 :Course: SIADS 697/698: Capstone
 :Focus: Machine Learning Models / Tuning / Hyperparameters
-
 
 
 |
@@ -176,11 +176,16 @@ Citations
 |
 
 
+The Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-Data Files:
+SubFiles:
 ::
-    data.csv.gz     # compressed file of all data values
+    data.csv.gz     # massive compressed file of all sensor data values and readings
+    nodes.csv       # list of nodes in the dataset and their individual metadata
+    README.md       # An explaination of the database fields 
+    sensors.csv     # A list of active sensors and their pertinent metadata
+    offsets.csv     # data.csv.gz file byte offsets
 
 
 |
