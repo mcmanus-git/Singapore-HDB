@@ -117,7 +117,6 @@ Appendix
 
 
 |
-|
 
 
 ----------
@@ -137,12 +136,13 @@ Citations
 
 
 |
-|
 
 
-
+----------------
 Reference Links
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------
+
+
 
 * http://arrayofthings.github.io/
 
@@ -150,11 +150,12 @@ Reference Links
 
 
 |
-|
 
 
+----------------
 The Data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------
+
 
 SubFiles:
 ::
@@ -165,7 +166,6 @@ SubFiles:
     offsets.csv     # data.csv.gz file byte offsets
 
 
-|
 |
 
 
