@@ -5,12 +5,12 @@ Capstone
 
 |
 
-:Splash Page: -
+:Splash Page: 
 :Author: Tom Bresee
 :Version: 2.0 
 :University: Michigan
 :Course: SIADS 697/698: Capstone
-:Focus: Machine Learning Models
+:Focus: Machine Learning Models / Tuning / Hyperparameters
 
 
 
