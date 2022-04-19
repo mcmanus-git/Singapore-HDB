@@ -18,16 +18,16 @@ def search_results_text(df, a, address, remaining_lease_years, sq_m, df_sqr_m, m
     print(sq_m)
     results_string = f"""
 ## Estimated Resale:  ${(a * int(sq_m) * remaining_lease_years):,.2f}
-${a * remaining_lease_years:.2f} per square meter  
+${a * remaining_lease_years:,.2f} per square meter  
 {remaining_lease_years} remaining lease years  
-(${a:.2f} per square meter per lease year predicted price)  
+(${a:,.2f} per square meter per lease year predicted price)  """
 
-
-#### Most Recent Transaction
+    historical_info_string = \
+f"""#### Most Recent Transaction
 The last property sold at this address was a {n_rooms} bedroom sold on {most_recent_transaction_date} for ${float(most_recent_resale):,.2f}
     """
 
-    return results_string
+    return results_string, historical_info_string
 
 
 def create_page_search_results(pathname):
@@ -56,25 +56,29 @@ def create_page_search_results(pathname):
 
     a, b = predict_price(path, objec_id_loc, df)
 
-    results_text = search_results_text(df, a, address, remaining_lease_years, sq_m, df_sqr_m, most_recent_transaction_date,
-                                       most_recent_resale, number_rooms)
+    results_text, historical_text = search_results_text(df, a, address, remaining_lease_years, sq_m, df_sqr_m,
+                                                        most_recent_transaction_date,most_recent_resale, number_rooms)
 
     layout = html.Div([
         nav,
+        html.H1(f"{address.replace('-', ' ')}", style={'textAlign': 'center', 'margin': '5% 0% 0% 0%'}),
         html.Div([dcc.Graph(figure=search_results_map)
                   ],
                  style={'margin': '0% 5% 0% 5%'}
                  ),
         # html.Div(id='address_search_output'),
-        html.Div([html.Div([html.H1(f"{address.replace('-', ' ')}", style={'textAlign': 'center'}),
+        html.Div([html.Div([
                             html.Br(),
                             html.Br(),
                             html.Div([dcc.Markdown(results_text)], style={'margin': '0% 0% 0% 7%'}),
                             html.Br(),
                             html.Br(),
+                            html.Div([dcc.Markdown("""### Features Impacting the Resale Price""")],
+                                     style={'margin': '0% 0% 0% 7%', 'textAlign': 'center'}),
                             html.Div([html.Img(src=b, style={'height': '100%', 'width': '100%'})]),
                             html.Br(),
                             html.Br(),
+                            html.Div([dcc.Markdown(historical_text)], style={'margin': '0% 0% 0% 7%'}),
                             # dbc.Row([
                             #     dbc.Col(html.Div([dcc.Markdown(results_text)])),
                             #     dbc.Col(html.Div([html.Img(src=b, style={'height': '100%', 'width': '100%'})]))

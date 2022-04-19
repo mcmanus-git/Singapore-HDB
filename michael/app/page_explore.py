@@ -38,6 +38,7 @@ def create_animated_map(df):
                                                      size=df['count_resale'],
                                                      color_continuous_scale=px.colors.cyclical.IceFire,
                                                      size_max=25,
+                                                     range_color=[200000, 1200000],
                                                      height=600,
                                                      opacity=0.7,
                                                      mapbox_style='light',
@@ -50,8 +51,12 @@ def create_page_explore():
     animated_map = create_animated_map(df)
     layout = html.Div([
         nav,
-        html.Div([dcc.Markdown("Explore Page")], style={'margin': '5% 10% 5% 10%'}),
+        html.Div([dcc.Markdown("### Explore Singapore")], style={'margin': '5% 10% 5% 10%'}),
+        html.Div([dcc.Markdown("""Normalized HDB Resale Price over Year  
+        Circle Color: Average Price In Planning Zone over Period | Circle Size: Number of Transactions in Period""")],
+                 style={'margin': '1% 10% 0% 10%', 'font-size': '12px'}),
         html.Div([dcc.Graph(figure=animated_map)]),
+
         html.Div([dcc.Markdown("""# Historical Stats  """),
                   html.Br(),
                   dcc.Markdown(create_explore_column_markdown(),
