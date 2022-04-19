@@ -125,6 +125,9 @@ XGBoost
   * Parameters:  Loss function to be minimized was set as ``reg:squarederror``.  
 
 
+* `Reference <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/final_images/default_xgboost_regressor_parameters.png>`_ default extracted XGBoost parameters (starting point)
+
+
 
 |
 
