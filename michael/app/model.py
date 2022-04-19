@@ -80,11 +80,13 @@ def prep_data_for_model(address, flat_type, df, sq_m):
         if flat_type:
             towns_dict[f"flat_type_{flat_type.lower().replace(' ', '_').replace('-', '_')}"] = 1
     # If sq_m is an empty string just use floor_area_sqm that's in the results table
-    if sq_m != '':
-        df.loc[0, 'floor_area_sqm'] = int(sq_m)
-    df.loc[0, 'remaining_lease_years'] = (
-            df.loc[0, 'remaining_lease_years'] - (datetime.now().year - df['month'].dt.year)).values
-    print(f"Remaining Lease Years: {(df.loc[0, 'remaining_lease_years'] - (datetime.now().year - df['month'].dt.year)).values}")
+    #___________________________________________________________________________________________________________
+    # if sq_m != '':
+    #     df.loc[0, 'floor_area_sqm'] = int(sq_m)
+    # df.loc[0, 'remaining_lease_years'] = (
+    #         df.loc[0, 'remaining_lease_years'] - (datetime.now().year - df['month'].dt.year)).values
+    # print(f"Remaining Lease Years: {(df.loc[0, 'remaining_lease_years'] - (datetime.now().year - df['month'].dt.year)).values}")
+    #___________________________________________________________________________________________________________
     # print((datetime.now().year - df['month'].dt.year).values)
     df = df.merge(pd.DataFrame(towns_dict, index=[0]), right_index=True, left_index=True)
     df = df[DatabaseHelpers.model_must_have]

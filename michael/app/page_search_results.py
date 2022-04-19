@@ -11,13 +11,16 @@ nav = create_navbar()
 discloser, footer = create_footer()
 
 
-def search_results_text(df, a, address, sq_m, most_recent_transaction_date, most_recent_resale, n_rooms):
+def search_results_text(df, a, address, remaining_lease_years, sq_m, df_sqr_m, most_recent_transaction_date, most_recent_resale, n_rooms):
     a = float(a[0])
     if sq_m == '':
-        sq_m = df['floor_area_sqm'].values
+        sq_m = df_sqr_m
+    print(sq_m)
     results_string = f"""
-## Estimated Resale:  ${(a * int(sq_m) * int(df['remaining_lease_years'].values[0])):,.2f}
-(${(a * int(df['remaining_lease_years'].values[0])):.2f} per square meter)  
+## Estimated Resale:  ${(a * int(sq_m) * remaining_lease_years):,.2f}
+${a * remaining_lease_years:.2f} per square meter
+{remaining_lease_years} remaining lease years
+(${a:.2f} per square meter per lease year predicted price)  
 
 
 #### Most Recent Transaction
@@ -41,6 +44,8 @@ def create_page_search_results(pathname):
 
     df = get_address_details(lon, lat, features)
     search_results_map = create_search_results_map(df)
+    remaining_lease_years = df['remaining_lease_years'].values[0]
+    df_sqr_m = df['floor_area_sqm'].values[0]
     most_recent_resale = df['resale_price'].values
     most_recent_transaction_date = df['month'].dt.strftime('%B %d, %Y')[0]
     number_rooms = int(df['n_rooms'].values[0])
@@ -51,7 +56,7 @@ def create_page_search_results(pathname):
 
     a, b = predict_price(path, objec_id_loc, df)
 
-    results_text = search_results_text(df, a, address, sq_m, most_recent_transaction_date,
+    results_text = search_results_text(df, a, address, remaining_lease_years, sq_m, df_sqr_m, most_recent_transaction_date,
                                        most_recent_resale, number_rooms)
 
     layout = html.Div([
