@@ -78,18 +78,14 @@ General Observations
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 
----------------------------
-Correlations
----------------------------
+**Correlations:**
 
 * Although lease remaining time can be calculated from the current year and lease start year, its correlation to the lease year was not very high.  Using both these variables together though seemed to increase model accuracy.
 
 * Although Linear Regression is interpretable, random forest regression appeared to perform relatively well. 
 
 
-----------
-XGBoost
-----------
+**XGBoost:**
 
 
 * Random forest regression needed relatively high depth
@@ -97,9 +93,7 @@ XGBoost
 * It was important to review the difference between the predicted and actual (gives us inight into how the model was performing)
 
 
----------------------------
-Random Forest Regression
----------------------------
+**Random Forest Regression:**
 
 
 * Some features were very very significant, while there were many where its importance value was quite low (exponential layout)
