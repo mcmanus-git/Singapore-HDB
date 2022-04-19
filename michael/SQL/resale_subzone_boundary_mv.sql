@@ -1,0 +1,11 @@
+-- create materialized view if not exists resale_subzone_boundary as
+-- select mp.zone_id, mp."SUBZONE_N", mp.geometry,  avg(lf.resale_price_norm) as avg_resale, min(lf.resale_price_norm) as min_resale,
+--        max(lf.resale_price_norm) as max_resale, count(distinct(transaction_id)) as count_resale,
+--        extract(year from lf.month) as transaction_year
+-- from master_plan_2019_subzone_boundary as mp
+--          join resale_location_features as lf
+--               on ST_Contains(mp.geometry, lf.geometry)
+--
+-- group by transaction_year, mp.zone_id, mp."SUBZONE_N", mp.geometry;
+
+-- select * from resale_subzone_boundary;
