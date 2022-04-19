@@ -28,9 +28,32 @@ What is the Chicago AoT Program ?
   *  In late
 
 
-  
 |
 |
+
+
+Jupyter Notebooks
+~~~~~~~~~~~~~~~~~~~
+
+* EDA pt I of II [`view <https://github.com/mcmanus-git/Singapore-HDB/blob/main/tom/nb_EDA_pt_I_of_II.ipynb>`_] [html]
+* Kaggle XGBoost + Optuna Research [`view <https://www.kaggle.com/code/tombresee/xgboost-drivers-license/notebook>`_]
+
+
+|
+|
+
+
+Images
+~~~~~~~~~~~~~~~~~~~
+
+* Correlation Plot of all base features [`full image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_matrix_baseline.png>`_] [`triangular image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_matrix_baseline_triangular.png>`_]
+
+* Correlation normed price to all other features [`image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_with_price_per-sqm_normed.png>`_]
+
+
+|
+|
+
 
 
 Feature Importances 
@@ -39,40 +62,6 @@ Feature Importances
 * insert feature importances for model 1
 
 * insert feature importances for model 2 
-
-
-|
-|
-
-
-
-SAGE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* The SAGE Project - https://sagecontinuum.org/
-
-* With Sage, advanced machine learning algorithms will be moved to “the edge.” Edge computing is a way to streamline data flowing from Internet of Things (IoT) devices by providing data analysis very near the site where the data is gathered. By linking small, powerful, computers directly to high-resolution cameras, air quality and weather sensors, and experimental Light Detection and Ranging (LIDAR) systems, this new distributed infrastructure will enable researchers to analyze and respond to data almost instantly. From early detection of wildfire smoke plumes in California to identifying ultrasonic calls of bats or the patterns of pedestrians in a busy crosswalk, Sage’s artificial intelligence-enabled sensors will give scientists a new tool to understand our planet.
-
-* SAGE - https://sagecontinuum.github.io/sage-docs/docs/about/overview
-
-
-* https://www.mccormick.northwestern.edu/news/articles/2020/05/workshop-explores-potential-of-smart-sensors-for-environmental-monitoring.html
-
-
-
-|
-|
-
-
-
-Privacy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* **No active sensors have the capability to measure or identify individuals !** 
-
-* Microphones and cameras in public spaces do not collect sensitive personally identifiable information (PII). Microphone and camera images are processed in near-real-time within the installed equipment, not transmitted or stored, with the exception of less than 1% of images at random times, saved for the purposes of image processing software calibration. Although these images will not contain PII, they will be controlled and protected with the same measures typically afforded PII. 
-
-
 
 
 |
@@ -92,68 +81,22 @@ SubFiles:
     offsets.csv     # data.csv.gz file byte offsets
 
 
+|
+|
+
+
 * What Data is Collected ?  
 
   * The nodes will initially measure temperature, barometric pressure, light, vibration, carbon monoxide, nitrogen dioxide, sulfur dioxide, ozone, ambient sound pressure, and pedestrian and vehicle traffic. Continued research and development is using machine learning to create sensors to monitor other urban factors of interest such as solar light intensity (visible, UV, and IR) and cloud cover (important to building energy management), and flooding and standing water.
 
 
+|
+
+**More:**
 
 |
 |
 
-
-Reference Links
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* http://arrayofthings.github.io/
-
-* **SAGE** - `Access Sage Sensors <https://sagecontinuum.github.io/sage-docs/docs/tutorials/access-sage-sensors>`_
-
-
-
-
-|
-|
-
-
-
-
-------
-Citations
-------
-
-`Journal of Open Source Software article <http://joss.theoj.org/papers/10.21105/joss.00205>`_.
-
-    L. McInnes, J. Healy, S. Astels, *hdbscan: Hierarchical density based clustering*
-    In: Journal of Open Source Software, The Open Journal, volume 2, number 11.
-    2017
-    
-
-    McInnes L, Healy J. *Accelerated Hierarchical Density Based Clustering* 
-    In: 2017 IEEE International Conference on Data Mining Workshops (ICDMW), IEEE, pp 33-42.
-    2017
-
-
-
-Jupyter Notebooks
-~~~~~~~~~~~~~~~~~~~
-
-* EDA pt I of II [`view <https://github.com/mcmanus-git/Singapore-HDB/blob/main/tom/nb_EDA_pt_I_of_II.ipynb>`_] [html]
-* Kaggle XGBoost + Optuna Research [`view <https://www.kaggle.com/code/tombresee/xgboost-drivers-license/notebook>`_]
-
-
-Images
-~~~~~~~~~~~~~~~~~~~
-
-* Correlation Plot of all base features [`full image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_matrix_baseline.png>`_] [`triangular image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_matrix_baseline_triangular.png>`_]
-
-* Correlation normed price to all other features [`image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_with_price_per-sqm_normed.png>`_]
-
-
-
-
-|
-|
 
 What is the Chicago AoT Program ? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -168,7 +111,6 @@ What is the Chicago AoT Program ?
 
 |
 |
-
 
 
 
@@ -198,6 +140,42 @@ General Observations
 
 
 
+Reference Links
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* http://arrayofthings.github.io/
+
+* **SAGE** - `Access Sage Sensors <https://sagecontinuum.github.io/sage-docs/docs/tutorials/access-sage-sensors>`_
+
+
+|
+|
+
+
+
+
+------
+Citations
+------
+
+`Journal of Open Source Software article <http://joss.theoj.org/papers/10.21105/joss.00205>`_.
+
+    L. McInnes, J. Healy, S. Astels, *hdbscan: Hierarchical density based clustering*
+    In: Journal of Open Source Software, The Open Journal, volume 2, number 11.
+    2017
+    
+
+    McInnes L, Healy J. *Accelerated Hierarchical Density Based Clustering* 
+    In: 2017 IEEE International Conference on Data Mining Workshops (ICDMW), IEEE, pp 33-42.
+    2017
+
+
+|
+|
+
+
+
+
 Data Files:
 ::
     data.csv.gz     # compressed file of all data values
@@ -218,6 +196,7 @@ ToDo:
      use that nice output from milestone II (blocks)
      https://github.com/DistrictDataLabs/yellowbrick/blob/develop/yellowbrick/regressor/residuals.py
      
+
 
 
 
