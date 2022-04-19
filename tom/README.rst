@@ -99,16 +99,18 @@ XGBoost
 
 * Although XGBoost training and prediction can be accelerated with CUDA-capable GPUs (allowing approximately 6X - 8X faster training vs conventional CPU), it should be noted that it gave *slightly* different results than the CPU-trained model. These differences were usually at the fourth or third decimal point level, but they did exist. XGBoost contains a parameter called the tree_method, which is set to ``hist`` on CPU and set to hist or ``gpu_hist`` on GPU. 
 
-*  It turns out that the tree method ``hist`` and ``gpu_hist`` algorithms are actually different. This was manifested in different prediction results for a larger type dataset (which ours was). 
-  *  Why is this important ? Because hyperparameter tuning methods such as `GridSearch` is inherently brute force, **so any edge in training time is a massive advantage**, especially for tuning in our case as much as we needed. 
+* It turns out that the tree method ``hist`` and ``gpu_hist`` algorithms are actually different. This was manifested in different prediction results for a larger type dataset (which ours was). 
+  * Why is this important ? Because hyperparameter tuning methods such as `GridSearch` is inherently brute force, **so any edge in training time is a massive advantage**, especially for tuning in our case as much as we needed. 
 
 
 * Note: GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. The tree_method hist is not the CPU version of the tree_method gpu_hist. They are different algorithms.
 
 
-* We enabled GPU training via the parameters: ``XGBRegressor(tree_method='gpu_hist', gpu_id=0)``.  
-  *  The tree_method hist is **not** the CPU version of the tree_method gpu_hist. They are different algorithms.
-  *  XGBoost also allows GPU support for SHAP acceleration
+* We enabled GPU training via the parameters: ``XGBRegressor(tree_method='gpu_hist', gpu_id=0)``. 
+
+  * The tree_method hist is **not** the CPU version of the tree_method gpu_hist.  They are different algorithms.   
+  
+  * XGBoost also allows GPU support for SHAP acceleration
 
 
 * We used the very latest version of XGBoost (version 1.6.0), which contains improvements and full coverage of experimental categorical data support. Metric calculation is now performed in double precision.  XGBoost now uses double for GPU Hist node sum, which improves the accuracy of our `gpu_hist`. 
