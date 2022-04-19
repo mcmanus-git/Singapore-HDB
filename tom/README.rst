@@ -103,10 +103,11 @@ XGBoost
   * Why is this important ? Because hyperparameter tuning methods such as `GridSearch` is inherently brute force, **so any edge in training time is a massive advantage**, especially for tuning in our case as much as we needed. 
 
 
-* Note: GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. 
+* Note: GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. The tree_method hist is not the CPU version of the tree_method gpu_hist. They are different algorithms.
 
 
-* GPU training enabled via: ``XGBRegressor(tree_method='gpu_hist', gpu_id=0)`` parameters 
+* We enabled GPU training via the parameters: ``XGBRegressor(tree_method='gpu_hist', gpu_id=0)``.  
+  * The tree_method hist is **not** the CPU version of the tree_method gpu_hist. They are different algorithms.
 
 
 * We used the very latest version of XGBoost (version 1.6.0), which contains improvements and full coverage of experimental categorical data support. Metric calculation is now performed in double precision.  XGBoost now uses double for GPU Hist node sum, which improves the accuracy of our `gpu_hist`. 
