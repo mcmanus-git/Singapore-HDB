@@ -96,8 +96,9 @@ XGBoost
 
 * Although XGBoost training and prediction can be accelerated with CUDA-capable GPUs (sometimes 6-8x faster than conventional CPU), it should be noted that it gave *slightly* different results than the CPU-trained model. These differences were usually at the fourth or third decimal point, but they did exist.  It turns out that the ``hist`` and ``gpu_hist`` algorithms are actually different. 
 
-
 * Note: GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. 
+
+* ``XGBRegressor(tree_method='gpu_hist', gpu_id=0)``
 
 
 Code:
