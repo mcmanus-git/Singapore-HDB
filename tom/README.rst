@@ -14,9 +14,7 @@ Capstone
 :Focus: Machine Learning Models / Tuning / Hyperparameters
 
 
-
 |
-
 
 
 Singapore Housing Analysis
@@ -55,6 +53,8 @@ Images
 * Correlation normed price to all other features [`image <https://github.com/mcmanus-git/Singapore-HDB/raw/main/tom/images/correlation_with_price_per-sqm_normed.png>`_]
 
 
+
+
 |
 |
 
@@ -73,20 +73,18 @@ Feature Importances
 
 
 
-
-|
-|
-
-
-
 General Observations
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+**Machine Learning Models:**
 
 * Although lease remaining time can be calculated from the current year and lease start year, its correlation to the lease year was not very high.  Using both these variables together though seemed to increase model accuracy.
 
 * Although Linear Regression is interpretable, random forest regression appeared to perform relatively well. 
 
 * Random forest regression needed relatively high depth
+
+**Random Forest:**
 
 * It was important to review the difference between the predicted and actual (gives us inight into how the model was performing)
 
@@ -111,28 +109,6 @@ Reference Links
 * http://arrayofthings.github.io/
 
 * **SAGE** - `Access Sage Sensors <https://sagecontinuum.github.io/sage-docs/docs/tutorials/access-sage-sensors>`_
-
-
-|
-|
-
-
-
-
-------
-Citations
-------
-
-`Journal of Open Source Software article <http://joss.theoj.org/papers/10.21105/joss.00205>`_.
-
-    L. McInnes, J. Healy, S. Astels, *hdbscan: Hierarchical density based clustering*
-    In: Journal of Open Source Software, The Open Journal, volume 2, number 11.
-    2017
-    
-
-    McInnes L, Healy J. *Accelerated Hierarchical Density Based Clustering* 
-    In: 2017 IEEE International Conference on Data Mining Workshops (ICDMW), IEEE, pp 33-42.
-    2017
 
 
 |
@@ -175,8 +151,8 @@ ToDo:
 
 
 
-What is the Chicago AoT Program ? 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Appendix
+~~~~~~~~~~~
 
 * The Array of Things (AoT) is an experimental urban measurement system comprising programmable, modular "nodes" with sensors and computing capability so that they can analyze data internally, for instance counting the number of vehicles at an intersection (and then deleting the image data rather than sending it to a data center). AoT nodes are installed in Chicago and a growing number of partner cities to collect real-time data on the city’s environment, infrastructure, and activity for research and public use. The concept of AoT is analogous to a “fitness tracker” for the city, measuring factors that impact livability in the urban environment, such as climate, air quality, and noise.  
 
@@ -184,6 +160,30 @@ What is the Chicago AoT Program ?
 * AoT is **now** an anchor partner in a new NSF-funded project called SAGE.
 
   *  In late 2018 the AoT team proposed a new effort to the National Science Foundation's Mid-Scale Research Infrastuructre program, with an expanded vision, building on all of the lessons learned from the AoT project and creating a new hardware and software infrastructure. Successfully funded with a start of October 2019, the new NSF-funded project, called SAGE: A Software-Defined Sensor Network, will result in a migration of AoT functions to new devices in 2021. SAGE is led by Northwestern University in partnership with the Discovery Partners Institute (University of Illinois), University of Chicago, Argonne National Laboratory, the University of Colorado, the University of California-San Diego, Northern Ill
+
+
+|
+
+
+----------
+Citations
+----------
+
+`Journal of Open Source Software article <http://joss.theoj.org/papers/10.21105/joss.00205>`_.
+
+    L. McInnes, J. Healy, S. Astels, *hdbscan: Hierarchical density based clustering*
+    In: Journal of Open Source Software, The Open Journal, volume 2, number 11.
+    2017
+    
+
+    McInnes L, Healy J. *Accelerated Hierarchical Density Based Clustering* 
+    In: 2017 IEEE International Conference on Data Mining Workshops (ICDMW), IEEE, pp 33-42.
+    2017
+
+
+|
+
+
 
 
 
