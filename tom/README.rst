@@ -97,7 +97,7 @@ Correlations
 XGBoost
 ---------------
 
-* Although XGBoost training and prediction can be accelerated with CUDA-capable GPUs (allowing approximately 6X - 8X faster training vs conventional CPU), it should be noted that it gave *slightly* different results than the CPU-trained model. These differences were usually at the fourth or third decimal point level, but they did exist. XGBoost contains a parameter called the tree_method, which is set to ``hist`` on CPU and set to hist or ``gpu_hist`` on GPU. 
+* Although XGBoost training and prediction can be accelerated with CUDA-capable GPUs (allowing approximately 6X - 8X faster training vs conventional CPU), it should be noted that it gave *slightly* different results than the CPU-trained model. These differences were usually at the fourth or third decimal point level, but they did exist. XGBoost contains a parameter called the tree_method (tree construction algorithm), which is set to ``hist`` on CPU and set to hist or ``gpu_hist`` on GPU. 
 
 * It turns out that the tree method ``hist`` and ``gpu_hist`` algorithms are actually different. This was manifested in different prediction results for a larger type dataset (which ours was). 
 
@@ -116,10 +116,18 @@ XGBoost
 
 * We used the very latest version of XGBoost (version 1.6.0), which contains improvements and full coverage of experimental categorical data support. Metric calculation is now performed in double precision.  XGBoost now uses double for GPU Hist node sum, which improves the accuracy of our `gpu_hist`. 
 
+* Regularization worked quite well. 
+
+* General Parameters, Booster Parameters, and Learning Task Parameters:
+
+* Configuration
+  
+  * Parameters:  Loss function to be minimized was set as ``reg:squarederror``.  
 
 
 
 |
+
 
 --------------------------
 Random Forest Regression
