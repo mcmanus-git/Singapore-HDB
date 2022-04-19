@@ -169,7 +169,6 @@ SubFiles:
 |
 
 
-
 ToDo:
 ::
      plot feature importances (ranked) for baseline model
@@ -180,6 +179,7 @@ ToDo:
      use that nice output from milestone II (blocks)
      https://github.com/DistrictDataLabs/yellowbrick/blob/develop/yellowbrick/regressor/residuals.py
      
+
 
 
 
