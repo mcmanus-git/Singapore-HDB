@@ -87,6 +87,9 @@ Correlations
 
 * Although Linear Regression is interpretable, random forest regression appeared to perform relatively well. 
 
+* Experiments we did were run on huge data, 80% of it in the training set, 20% of it being used for evaluation.
+
+
 |
 
 
@@ -94,11 +97,20 @@ Correlations
 XGBoost
 ---------------
 
-* Although XGBoost training and prediction can be accelerated with CUDA-capable GPUs (sometimes 6-8x faster than conventional CPU), it should be noted that it gave *slightly* different results than the CPU-trained model. These differences were usually at the fourth or third decimal point, but they did exist.  It turns out that the ``hist`` and ``gpu_hist`` algorithms are actually different. 
+* Although XGBoost training and prediction can be accelerated with CUDA-capable GPUs (allowing approximately 6X - 8X faster training vs conventional CPU), it should be noted that it gave *slightly* different results than the CPU-trained model. These differences were usually at the fourth or third decimal point level, but they did exist. XGBoost contains a parameter called the tree_method, which is set to ``hist`` on CPU and set to hist or ``gpu_hist`` on GPU. 
+
+*  It turns out that the tree method ``hist`` and ``gpu_hist`` algorithms are actually different. This was manifested in different prediction results for a larger type dataset (which ours was). 
+  * Why is this important ? Because hyperparameter tuning methods such as `GridSearch` is inherently brute force, **so any edge in training time is a massive advantage**, especially for tuning in our case as much as we needed. 
+
 
 * Note: GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. 
 
+
 * GPU training enabled via: ``XGBRegressor(tree_method='gpu_hist', gpu_id=0)`` parameters 
+
+
+* We used the very latest version of XGBoost (version 1.6.0), which contains improvements and full coverage of experimental categorical data support. Metric calculation is now performed in double precision.  XGBoost now uses double for GPU Hist node sum, which improves the accuracy of our `gpu_hist`. 
+
 
 
 
