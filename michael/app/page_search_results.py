@@ -18,8 +18,8 @@ def search_results_text(df, a, address, remaining_lease_years, sq_m, df_sqr_m, m
     print(sq_m)
     results_string = f"""
 ## Estimated Resale:  ${(a * int(sq_m) * remaining_lease_years):,.2f}
-${a * remaining_lease_years:.2f} per square meter
-{remaining_lease_years} remaining lease years
+${a * remaining_lease_years:.2f} per square meter  
+{remaining_lease_years} remaining lease years  
 (${a:.2f} per square meter per lease year predicted price)  
 
 
