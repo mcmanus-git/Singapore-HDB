@@ -98,13 +98,7 @@ XGBoost
 
 * Note: GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. 
 
-* ``XGBRegressor(tree_method='gpu_hist', gpu_id=0)``
-
-
-Code:
-::
-    XGBRegressor(tree_method='gpu_hist', gpu_id=0)
-
+* GPU training enabled via: ``XGBRegressor(tree_method='gpu_hist', gpu_id=0)`` parameters 
 
 
 
