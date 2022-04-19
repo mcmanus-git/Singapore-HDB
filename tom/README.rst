@@ -94,10 +94,9 @@ Correlations
 XGBoost
 ---------------
 
+* Although XGBoost training and prediction can be accelerated with CUDA-capable GPUs (sometimes 6-8x faster than conventional CPU), it should be noted that it gave *slightly* different results than the CPU-trained model. These differences were usually at the fourth or third decimal point, but they did exist.  It turns out that the ``hist`` and ``gpu_hist`` algorithms are actually <u>different<\u>. 
+Note: GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. 
 
-* Random forest regression needed relatively high depth
-
-* It was important to review the difference between the predicted and actual (gives us inight into how the model was performing)
 
 
 |
@@ -105,6 +104,11 @@ XGBoost
 --------------------------
 Random Forest Regression
 --------------------------
+
+
+* Random forest regression needed relatively high depth
+
+* It was important to review the difference between the predicted and actual (gives us inight into how the model was performing)
 
 
 * Some features were very very significant, while there were many where its importance value was quite low (exponential layout)
