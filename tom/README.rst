@@ -14,12 +14,8 @@ Capstone
 :Focus: Machine Learning Models / Tuning / Hyperparameters
 
 
-
-
-
-
-
-
+|
+|
 
 
 Singapore Housing Analysis
@@ -81,7 +77,10 @@ Feature Importances
 General Observations
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Machine Learning Models:**
+----------
+XGBoost
+----------
+
 
 * Although lease remaining time can be calculated from the current year and lease start year, its correlation to the lease year was not very high.  Using both these variables together though seemed to increase model accuracy.
 
@@ -112,6 +111,8 @@ General Observations
 
 Appendix
 ~~~~~~~~~~~
+
+https://www.tombresee.com/NFL/Milestone/
 
 * The Array of Things (AoT) is an experimental urban measurement system comprising programmable, modular "nodes" with sensors and computing capability so that they can analyze data internally, for instance counting the number of vehicles at an intersection (and then deleting the image data rather than sending it to a data center). AoT nodes are installed in Chicago and a growing number of partner cities to collect real-time data on the city’s environment, infrastructure, and activity for research and public use. The concept of AoT is analogous to a “fitness tracker” for the city, measuring factors that impact livability in the urban environment, such as climate, air quality, and noise.  
 
