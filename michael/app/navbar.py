@@ -19,7 +19,7 @@ def create_navbar():
                 ],
             ),
         ],
-        brand="Why-High",
+        brand="HDB-estimate",
         brand_href="/",
         sticky="top",
         # color='#D91800',

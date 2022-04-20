@@ -48,5 +48,5 @@ def display_page(pathname):
 
 
 if __name__ == '__main__':
-    app.title = "WhyHigh"
+    app.title = "HDBestimate"
     app.run_server(debug=True)
