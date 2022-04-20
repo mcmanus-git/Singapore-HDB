@@ -20,7 +20,7 @@ def get_explore_column_data():
 def create_explore_column_markdown():
     df = get_explore_column_data()
 
-    explore_text = f"""#### Highest Resale Price: 
+    explore_text = f"""#### Highest Resale Price 
 ${df[df['attribute'] == 'highest_resale'].iloc[0, 2]:,.2f}  
 {df[df['attribute'] == 'highest_resale'].iloc[0, 0]}  SINGAPORE.  
 [See what this property would sell for today](search-results/1B-CANTONMENT-RD-Singapore%103.841403430465%1.27779940676005%5-Room%).
@@ -34,7 +34,7 @@ ${df[df['attribute'] == 'lowest_resale'].iloc[0, 2]:,.2f}
 
 <br>
 
-#### Address with the Most Resold Flats:  
+#### Address with the Most Resold Flats  
 Resold {int(df[df['attribute'] == 'max_n_resales'].iloc[0, 2])} times.
 {df[df['attribute'] == 'max_n_resales'].iloc[0, 0]}  
 

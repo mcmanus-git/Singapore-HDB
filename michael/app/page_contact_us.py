@@ -13,8 +13,8 @@ bio_text_tom = \
 """
 
 ## Tom Bresee  
-
-
+Tom Bresee works as a Network Scientist at T-Mobile, where he is in charge of 5G network IP design and architecture. 
+His interests include applying algorithms to understand network behavior, detect anomalies, and predict network capacity needs.  
 """
 
 contacts_tom = """[LinkedIn](https://www.linkedin.com/in/tombresee/) | [GitHub](https://github.com/tombresee) | tbresee@umich.edu"""
@@ -34,7 +34,7 @@ bio_text_stuart = \
 """
 
 ## Stuart Ong  
-
+Portfolio manager by day, aspiring data scientist by night - Stuart enjoys using data science to solve real-world problems and challenges not only within finance but across other industries as well.  
 
 
 """
@@ -47,7 +47,7 @@ def create_page_contact_us():
         html.Div([header], style={'margin': '5% 10% 5% 10%', 'textAlign': 'center'}),
         # Tom
         html.Div([dcc.Markdown(line_break_text)], style={'margin': '5% 10% 5% 10%'}),
-        html.Div([dcc.Markdown(bio_text_tom)], style={'margin': '5% 10% 5% 10%'}),
+        html.Div([dcc.Markdown(bio_text_tom)], style={'margin': '5% 10% 0% 10%'}),
         html.Br(),
         html.Div([dcc.Markdown(contacts_tom)], style={'margin': '0% 10% 0% 10%'}),
         # Michael
@@ -57,7 +57,7 @@ def create_page_contact_us():
         html.Div([dcc.Markdown(contacts_michael)], style={'margin': '0% 10% 0% 10%'}),
         # Stuart
         html.Div([dcc.Markdown(line_break_text)], style={'margin': '5% 10% 5% 10%'}),
-        html.Div([dcc.Markdown(bio_text_stuart)], style={'margin': '5% 10% 5% 10%'}),
+        html.Div([dcc.Markdown(bio_text_stuart)], style={'margin': '5% 10% 0% 10%'}),
         html.Br(),
         html.Div([dcc.Markdown(contacts_stuart)], style={'margin': '0% 10% 0% 10%'}),
 

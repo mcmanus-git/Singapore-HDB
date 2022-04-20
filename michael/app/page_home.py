@@ -6,7 +6,7 @@ from navbar import create_navbar, create_footer
 from app import app
 from dash.dependencies import Input, Output
 import time
-from markdown_helper_home_page import create_explore_column_markdown
+from markdown_helper_explore_page import create_explore_column_markdown
 from geopy.geocoders import Nominatim
 
 # Note to self:
@@ -53,7 +53,8 @@ def create_page_home(sg_base_map):
                       dcc.Markdown("""  
 Often, we purchase our home at the whims of the market without any clear insights into what is driving the cost. 
 This is particularly true when it comes to HDB flats which, by all appearances, are the same cookie cutter flat-type with largely varying prices.  
-Why is that? Enter HDBestimate, here to help you understand the underlying reasons your home is priced the way it is. 
+Outside other economic factors, location and proximity to places of interest can be key drivers of your home's cost. How *does* location influence your home's cost? 
+Enter HDBestimate, here to help you understand the underlying reasons your home is priced the way it is. 
         """),
                       html.Br(),
                       html.H3("Explore", style={'text-transform': 'none'}),
