@@ -22,19 +22,21 @@ def create_explore_column_markdown():
 
     explore_text = f"""#### Highest Resale Price: 
 ${df[df['attribute'] == 'highest_resale'].iloc[0, 2]:,.2f}  
-[{df[df['attribute'] == 'highest_resale'].iloc[0, 0]}]({int(df[df['attribute'] == 'highest_resale'].iloc[0, 1])})  
+{df[df['attribute'] == 'highest_resale'].iloc[0, 0]}  SINGAPORE.  
+[See what this property would sell for today](search-results/1B-CANTONMENT-RD-Singapore%103.841403430465%1.27779940676005%5-Room%).
 
 <br>
 
 #### Lowest Resale Price  
 ${df[df['attribute'] == 'lowest_resale'].iloc[0, 2]:,.2f}  
-[{df[df['attribute'] == 'lowest_resale'].iloc[0, 0]}]({int(df[df['attribute'] == 'lowest_resale'].iloc[0, 1])})  
+{df[df['attribute'] == 'lowest_resale'].iloc[0, 0]}  SINGAPORE.  
+[See what this property would sell for today](search-results/96-ALJUNIED-CRES-Singapore%1103.885423356978%1.32165649786917%2-Room%).  
 
 <br>
 
 #### Address with the Most Resold Flats:  
 Resold {int(df[df['attribute'] == 'max_n_resales'].iloc[0, 2])} times.
-[{df[df['attribute'] == 'max_n_resales'].iloc[0, 0]}]({int(df[df['attribute'] == 'max_n_resales'].iloc[0, 1])})  
+{df[df['attribute'] == 'max_n_resales'].iloc[0, 0]}  
 
 <br>
 

@@ -72,13 +72,19 @@ def prep_data_for_model(address, flat_type, df, sq_m):
     geolocator = Nominatim(user_agent="http://127.0.0.1:8050/")
     location = geolocator.geocode(address.replace('-', ' '), namedetails=True)
     towns_dict = DatabaseHelpers.towns_dict
-    if flat_type != 1:
+    if flat_type != "1-Room":
         # If flat_type isn't 1 bedroom add 1 to which town the address is in
         town_key = f"town_{location.raw['display_name'].split(', ')[3].lower().replace(' ', '_')}"
         if town_key in towns_dict.keys():
             towns_dict[town_key] = 1
         if flat_type:
             towns_dict[f"flat_type_{flat_type.lower().replace(' ', '_').replace('-', '_')}"] = 1
+
+    flat_type_convert = {'1-Room': 1, '2-Room': 2, '3-Room': 3, '4-Room': 4, '5-Room': 5,
+                         'Multi Generation': 5, 'Executive': 5}
+
+    df.loc[0, 'n_rooms'] = flat_type_convert[flat_type]
+    print(f"Data Prep: {df.loc[0, 'n_rooms']}")
     # If sq_m is an empty string just use floor_area_sqm that's in the results table
     #___________________________________________________________________________________________________________
     # if sq_m != '':

@@ -47,17 +47,18 @@ def create_page_search_results(pathname):
     remaining_lease_years = df['remaining_lease_years'].values[0]
     df_sqr_m = df['floor_area_sqm'].values[0]
     most_recent_resale = df['resale_price'].values
-    most_recent_transaction_date = df['month'].dt.strftime('%B %d, %Y')[0]
+    most_recent_transaction_date = df['month'].dt.strftime('%B, %Y')[0]
     number_rooms = int(df['n_rooms'].values[0])
-    df = prep_data_for_model(address, flat_type, df, sq_m)
+    print(f"Flat type going into model: {flat_type}")
+    df_model = prep_data_for_model(address, flat_type, df, sq_m)
 
     path = 'assets/model_xgb.pickle.dat'
     objec_id_loc = 'assets/object_id_dict.pickle'
 
-    a, b = predict_price(path, objec_id_loc, df)
+    a, b = predict_price(path, objec_id_loc, df_model)
 
     results_text, historical_text = search_results_text(df, a, address, remaining_lease_years, sq_m, df_sqr_m,
-                                                        most_recent_transaction_date,most_recent_resale, number_rooms)
+                                                        most_recent_transaction_date, most_recent_resale, number_rooms)
 
     layout = html.Div([
         nav,

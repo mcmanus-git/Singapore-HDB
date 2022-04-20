@@ -57,7 +57,7 @@ def create_page_explore():
                  style={'margin': '1% 10% 0% 10%', 'font-size': '12px'}),
         html.Div([dcc.Graph(figure=animated_map)]),
 
-        html.Div([dcc.Markdown("""# Historical Stats  """),
+        html.Div([dcc.Markdown("""## Historical Stats  """),
                   html.Br(),
                   dcc.Markdown(create_explore_column_markdown(),
                                style={"white-space": "pre"},
