@@ -74,7 +74,7 @@ def create_page_search_results(pathname):
                             html.Div([dcc.Markdown(results_text)], style={'margin': '0% 0% 0% 7%'}),
                             html.Br(),
                             html.Br(),
-                            html.Div([dcc.Markdown("""### Features Impacting the Resale Price""")],
+                            html.Div([dcc.Markdown("""### Features Impacting Resale Price""")],
                                      style={'margin': '0% 0% 0% 7%', 'textAlign': 'center'}),
                             html.Div([html.Img(src=b, style={'height': '100%', 'width': '100%'})]),
                             html.Br(),

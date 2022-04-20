@@ -49,10 +49,19 @@ def create_page_home(sg_base_map):
             html.Div(id='address_search_output'),
             html.Br(),
             html.Br(),
-            html.Div([dcc.Markdown("""# Explore
-Unfamiliar with Singapore?  Check out our [Explore Page](/explore)."""),
+            html.Div([html.H3("HDBestimate", style={'text-transform': 'none'}),
+                      dcc.Markdown("""  
+Often, we purchase our home at the whims of the market without any clear insights into what is driving the cost. 
+This is particularly true when it comes to HDB flats which, by all appearances, are the same cookie cutter flat-type with largely varying prices.  
+Why is that? Enter HDBestimate, here to help you understand the underlying reasons your home is priced the way it is. 
+        """),
                       html.Br(),
-                      dcc.Markdown("""Placeholder""",
+                      html.H3("Explore", style={'text-transform': 'none'}),
+                      dcc.Markdown("""Unfamiliar with Singapore? That's ok! Check out our [Explore Page](/explore)."""),
+                      html.Br(),
+                      html.H3("How did we do it?", style={'text-transform': 'none'}),
+                      dcc.Markdown("""Interested in knowing more about how HDBestimate works to deliver transparency in the HDB market? 
+Head on over to the [Blog Page](/blog) and take a closer look.""",
                                    style={"white-space": "pre"},
                                    dangerously_allow_html=True)
                       ]),
