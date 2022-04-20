@@ -134,7 +134,10 @@ XGBoost
 
 * Due to our GPU usage, we were able to iterate over set parameters for speed...
 
-* **max_depth** - as the dept increased, so the training time increased.  
+* **max_depth** - as the depth increased, so the training time increased.  Large values of max_depth consumes memory when training. As expected, we observed that increasing this value would make the model more complex and more likely to overfit (thus the need for regularization). 
+
+
+
 
 
 
