@@ -134,5 +134,6 @@ dmypy.json
 
 michael/.DS_Store
 michael/data/resale-flat-prices-output/resale_prices.pkl
+michael/app/MyCreds
 
 stuart/cache
