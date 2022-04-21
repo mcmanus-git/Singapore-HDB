@@ -19,7 +19,7 @@ app.layout = dbc.Container(html.Div([
     dcc.Location(id='url', refresh=False),
     dcc.Loading(id="loading_page_content",
                 children=[
-                          html.Div(id='page-content')],
+                    html.Div(id='page-content')],
                 type="cube",
                 color='#4ABF72',
                 fullscreen=True
@@ -50,3 +50,4 @@ def display_page(pathname):
 if __name__ == '__main__':
     app.title = "HDBestimate"
     app.run_server(debug=True)
+
