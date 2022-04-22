@@ -1,4 +1,10 @@
 
+SHAP — a tool that helps to explain what are the main features that affect the output of the regression model
+
+
+
+
+
 Capstone
 ##########
 
@@ -16,6 +22,8 @@ Capstone
 
 |
 |
+
+
 
 
 Singapore Housing Analysis
