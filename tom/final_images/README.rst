@@ -18,32 +18,33 @@ Capstone
 
 
 
-Singapore Housing Analysis
+Singapore HDB Housing Analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * we did this 
 
 * we did that
 
-  *  Adjusting parameters (results)
+  *  we did that
 
+
+
+
+|
+|
+
+
+
+Datasets
+~~~~~~~~~~~~~~~~~~
+
+* abc
+* def
 
 
 |
 |
 
-
-
-Feature Importances 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* insert feature importances for model 1
-
-* insert feature importances for model 2 
-
-
-|
-|
 
 
 
@@ -56,8 +57,7 @@ Correlations
 ---------------
 
 
-* **Note:** - GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. The tree_method hist is not the CPU version of the tree_method gpu_hist. They are different algorithms.
-
+* **Note:** - GPU 
 
 * We enabled GPU training
 
@@ -73,7 +73,7 @@ Correlations
 ---------------
 
 
-* **Note:** - GPU accelerated prediction is enabled by default when ``gpu_hist`` is set. The tree_method hist is not the CPU version of the tree_method gpu_hist. They are different algorithms.
+* **Note:** - GPU accelerated prediction
 
 
 * We enabled GPU training
@@ -91,12 +91,8 @@ Appendix
 ~~~~~~~~~~~
 
 
-* The Arrayfac
-
-
-* AoT 
-
-  *  In late
+* This is an appendix
+  *  Its very good
 
 
 
@@ -108,7 +104,7 @@ Appendix
 Citations
 ----------
 
-`Journal of Open Source Software article <http://joss.theoj.org/papers/10.21105/joss.00205>`_.
+`Citations used throughout the project <http://joss.theoj.org/papers/10.21105/joss.00205>`_.
 
     L. McInnes, J. Healy, S. Astels, *hdbscan: Hierarchical density based clustering*
     In: Journal of Open Source Software, The Open Journal, volume 2, number 11.
@@ -118,6 +114,8 @@ Citations
     McInnes L, Healy J. *Accelerated Hierarchical Density Based Clustering* 
     In: 2017 IEEE International Conference on Data Mining Workshops (ICDMW), IEEE, pp 33-42.
     2017
+
+    Singapore government stuff ... 
 
 
 |
@@ -152,23 +150,6 @@ SubFiles:
     README.md       # An explaination of the database fields 
     sensors.csv     # A list of active sensors and their pertinent metadata
     offsets.csv     # data.csv.gz file byte offsets
-
-
-|
-
-
-ToDo:
-::
-     plot feature importances (ranked) for baseline model
-     summarize baseline model results / predictions
-     improve plots from regression
-     show the gridsearch 
-     Optuna use
-     use that nice output from milestone II (blocks)
-     https://github.com/DistrictDataLabs/yellowbrick/blob/develop/yellowbrick/regressor/residuals.py
-     
-
-
 
 
 |
