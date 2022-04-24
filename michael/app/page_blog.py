@@ -43,7 +43,7 @@ What work?
 def create_page_blog():
 
     # with open('../app/assets/Blog HTML Test.html') as file:
-    with open('../app/assets/blog_check.html') as file:
+    with open('assets/blog_check.html') as file:
         lines = file.readlines()
 
     lines = "".join(lines)

@@ -2,9 +2,8 @@
 from dash import html, dcc
 from navbar import create_navbar, create_footer
 from markdown_helper_explore_page import create_explore_column_markdown
-from app import app
 from sqlalchemy import create_engine
-from MyCreds.mycreds import Capstone_AWS_SG, MapBox
+from michael.app.MyCreds.mycreds import Capstone_AWS_SG
 import geopandas as gpd
 import plotly.express as px
 

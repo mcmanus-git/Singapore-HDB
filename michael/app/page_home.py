@@ -3,7 +3,7 @@ from dash import dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import State
 from navbar import create_navbar, create_footer
-from app import app
+from michael.app.app import app
 from dash.dependencies import Input, Output
 import time
 from geopy.geocoders import Nominatim
