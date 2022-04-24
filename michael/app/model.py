@@ -68,7 +68,7 @@ def predict_price(model_loc, object_id_loc, prediction_df):
     return prediction, fig
 
 
-def prep_data_for_model(address, flat_type, df, sq_m):
+def prep_data_for_model(address, flat_type, df, storey, sq_m):
     geolocator = Nominatim(user_agent="http://127.0.0.1:8050/")
     location = geolocator.geocode(address.replace('-', ' '), namedetails=True)
     towns_dict = DatabaseHelpers.towns_dict
@@ -81,10 +81,16 @@ def prep_data_for_model(address, flat_type, df, sq_m):
             towns_dict[f"flat_type_{flat_type.lower().replace(' ', '_').replace('-', '_')}"] = 1
 
     flat_type_convert = {'1-Room': 1, '2-Room': 2, '3-Room': 3, '4-Room': 4, '5-Room': 5,
-                         'Multi Generation': 5, 'Executive': 5}
+                         'Multi-Generation': 5, 'Executive': 5}
 
     df.loc[0, 'n_rooms'] = flat_type_convert[flat_type]
-    print(f"Data Prep: {df.loc[0, 'n_rooms']}")
+    storey = int(storey)
+    if storey == 1:
+        df.loc[0, 'storey_range_min'] = storey
+        df.loc[0, 'storey_range_max'] = storey + 1
+    elif storey > 1:
+        df.loc[0, 'storey_range_min'] = storey - 1
+        df.loc[0, 'storey_range_max'] = storey + 1
     # If sq_m is an empty string just use floor_area_sqm that's in the results table
     #___________________________________________________________________________________________________________
     # if sq_m != '':

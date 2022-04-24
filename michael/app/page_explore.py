@@ -1,6 +1,4 @@
 # import dash_html_components as html
-import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State
 from dash import html, dcc
 from navbar import create_navbar, create_footer
 from markdown_helper_explore_page import create_explore_column_markdown
