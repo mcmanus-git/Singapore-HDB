@@ -253,6 +253,22 @@ Coeff of det (R^2):..... 0.965
     tree_method='hist'
 ```
 ___  
+# Ethical Considerations
+Our core data is governed by the [Singapore Open Data License](https://data.gov.sg/open-data-licence), 
+which aims to “promote and enable easy reuse of Public Sector data to create value for the Singapore area community 
+and businesses”. According to the bylaws, the use, access, download, copy, distribution, transmission, modification
+and adaptation of the datasets, as well as our derived analyses and applications falls under acceptable use according 
+to the license. We followed this bylaw explicitly.   
+
+**Please Note**: ***The use the datasets does not in a way suggest any
+official status nor suggest a Singapore agency endorsed us or the use of their datasets***. We specifically followed 
+the guidance of the license language and placed a conspicuous notice at the bottom of the website acknowledging the 
+source of the datasets including a link to the most recent version of their posted license.  
+
+Note: location data (such as rail station information, locations of taxi stands) are all publicly available. This data 
+was scraped and imported for usage in the modeling.
+
+___  
 
 # Suggestions for Future Research  
 
