@@ -270,6 +270,9 @@ ___
 ___  
 
 # Statment of Work  
-**Michael** - Data gathering, cleaning, and pipelining into the database. Initial database creation. Webapp development and hosting.
-**Stuart** - Data gathering, cleaning, and pipelining into the database. Second/current database creation. XGBoost Model creation and validation. Blog.
-**Tom** - Data analysis and creation of baseline Random Forest Regression model. Blog.
+**Michael** - Data gathering, cleaning, and pipelining into the database. Initial database creation. Webapp development and hosting.  
+
+**Stuart** - Data gathering, cleaning, and pipelining into the database. Second/current database creation. XGBoost Model creation and validation. Blog.  
+
+**Tom** - Data analysis and creation of baseline Random Forest Regression model. Blog.  
+
