@@ -253,7 +253,8 @@ Coeff of det (R^2):..... 0.965
     tree_method='hist'
 ```
 ___  
-# Ethical Considerations
+# Ethical Considerations  
+### Ethical Use of the Data
 Our core data is governed by the [Singapore Open Data License](https://data.gov.sg/open-data-licence), 
 which aims to “promote and enable easy reuse of Public Sector data to create value for the Singapore area community 
 and businesses”. According to the bylaws, the use, access, download, copy, distribution, transmission, modification
@@ -266,7 +267,24 @@ the guidance of the license language and placed a conspicuous notice at the bott
 source of the datasets including a link to the most recent version of their posted license.  
 
 Note: location data (such as rail station information, locations of taxi stands) are all publicly available. This data 
-was scraped and imported for usage in the modeling.
+was scraped and imported for usage in the modeling.  
+
+### Other Ethical Considerations  
+
+Some data used in this analysis could provide information with the potential to be misconstrued as a proxy for wealth or social 
+status. Users of the model should understand the intended use of the model and tool is to best estimate the resale value of their HDB Flat 
+and make no causal inference to the "types of people" who may live in these areas. Thoughtful consideration of this concern
+has been taken throughout the course of this analysis. Further, the Singaporean government has taken steps to mitigate
+racial conclaves which may otherwise occur by mandating the [Ethnic Integration Policy](https://eresources.nlb.gov.sg/history/events/d8fea656-d86e-4658-9509-974225951607#:~:text=To%20ensure%20a%20better%20racial,each%20block%20was%2025%20percent.).
+This integration policy helps to "... ensure a better racial mix in HDB estates, the government established ethnic 
+quotas for HDB neighbourhoods and blocks. The permissible proportion of flats in each neighbourhood for Malays was 22 
+percent while the permissible proportion of flats in each block was 25 percent. For Chinese, the permissible proportions
+were 84 percent and 87 percent respectively, and for Indians and other minority groups, the figures were reduced to 10 
+percent and 13 percent respectively" [[1]](https://eresources.nlb.gov.sg/history/events/d8fea656-d86e-4658-9509-974225951607#:~:text=To%20ensure%20a%20better%20racial,each%20block%20was%2025%20percent.).
+While we are confident this policy aids in reducing the perpetuation of biases toward a particular area over another while 
+also realizing it is still possible as the model provided predicts price based on location and in time series.  Some 
+biases may be further embedded in Singaporean culture as a result of our analysis and tool.
+
 
 ___  
 
