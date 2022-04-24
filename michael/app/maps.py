@@ -2,8 +2,7 @@ import pandas as pd
 import geopandas as gpd
 import plotly.express as px
 import plotly.graph_objects as go
-from MyCreds.mycreds import MapBox
-from database_helpers import DatabaseHelpers
+from michael.app.MyCreds.mycreds import MapBox
 
 map_style_global = 'light'#'carto-positron'
 

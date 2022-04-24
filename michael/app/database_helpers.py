@@ -1,6 +1,5 @@
-import pandas as pd
 from sqlalchemy import create_engine
-from MyCreds.mycreds import Capstone_AWS_SG
+from michael.app.MyCreds.mycreds import Capstone_AWS_SG
 
 
 class DatabaseHelpers:

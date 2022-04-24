@@ -8,8 +8,7 @@ from page_contact_us import create_page_contact_us
 from page_search_results import create_page_search_results
 from page_explore import create_page_explore
 from page_datasets import create_datasets_page
-from app import app
-import re
+from michael.app.app import app
 from maps import create_sg_base_map
 
 server = app.server
@@ -49,5 +48,5 @@ def display_page(pathname):
 
 if __name__ == '__main__':
     app.title = "HDBestimate"
-    app.run_server(debug=True)
+    app.run_server(debug=False)
 
